@@ -1,0 +1,28 @@
+model AuditLog {
+  auditId   String      @id @default(uuid()) @db.Uuid
+  userId    String?     @db.Uuid
+  userEmail String?     @db.VarChar(255)
+  action    AuditAction
+  message   String?     @db.VarChar(255)
+  method    String      @db.VarChar(100)
+  details   Json?       @db.JsonB
+  createdAt DateTime    @default(now())
+  User      User?       @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([action])
+  @@index([createdAt])
+  @@map("audit_logs")
+}
+
+enum AuditAction {
+  SIGN_IN
+  FORGOT_PASSWORD
+  RESET_PASSWORD
+
+  API_KEY_CREATE
+  API_KEY_UPDATE
+  API_KEY_REVOKE
+  API_KEY_ACCESS_AUTHORIZED
+  API_KEY_ACCESS_DENIED
+}

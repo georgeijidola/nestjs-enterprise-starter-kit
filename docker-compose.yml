@@ -1,0 +1,29 @@
+services:
+  database:
+    container_name: nestjs_enterprise_starter_kit_db
+    image: postgres:16.2-alpine3.19
+    ports:
+      - 5432:5432
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - ./initdb-scripts:/docker-entrypoint-initdb.d
+    environment:
+      POSTGRES_USER: john_doe
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: nestjs_enterprise_starter_kit
+
+  api:
+    container_name: nestjs_enterprise_starter_kit_api
+    build: .
+    ports:
+      - $PORT:$PORT
+    volumes:
+      - .:/code
+    env_file: .env
+    restart: unless-stopped
+    depends_on:
+      - database
+    stdin_open: true
+    tty: true
+    command: ['npm', 'run', 'start:dev']

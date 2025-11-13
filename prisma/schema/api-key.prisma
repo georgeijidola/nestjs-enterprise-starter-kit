@@ -1,0 +1,49 @@
+enum ApiKeyStatus {
+  ACTIVE
+  REVOKED
+  EXPIRED
+}
+
+model ApiKey {
+  id          String       @id @default(uuid()) @db.Uuid
+  name        String       @db.VarChar(255)
+  keyHash     String       @unique @db.VarChar(255)
+  status      ApiKeyStatus @default(ACTIVE)
+  description String?      @db.Text
+  createdById String       @db.Uuid
+  expiresAt   DateTime?    @db.Timestamp()
+  lastUsedAt  DateTime?    @db.Timestamp()
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  createdBy        User             @relation(fields: [createdById], references: [id])
+  whitelistEntries WhitelistEntry[]
+
+  @@index([keyHash])
+  @@index([status])
+  @@index([createdById])
+  @@map("api_keys")
+}
+
+enum WhitelistType {
+  IP_ADDRESS
+  DOMAIN
+  CIDR_RANGE
+}
+
+model WhitelistEntry {
+  id        String        @id @default(uuid()) @db.Uuid
+  apiKeyId  String        @db.Uuid
+  type      WhitelistType
+  value     String        @db.VarChar(255)
+  isActive  Boolean       @default(true)
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+
+  apiKey ApiKey @relation(fields: [apiKeyId], references: [id], onDelete: Cascade)
+
+  @@unique([apiKeyId, type, value])
+  @@index([apiKeyId])
+  @@index([type, value])
+  @@map("whitelist_entries")
+}
