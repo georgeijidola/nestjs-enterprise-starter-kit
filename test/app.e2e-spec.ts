@@ -1,127 +1,49 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { INestApplication } from '@nestjs/common';
-import * as request from 'supertest';
-import { AppModule } from './../src/app.module';
+import {
+  FastifyAdapter,
+  NestFastifyApplication,
+} from '@nestjs/platform-fastify';
+import request from 'supertest';
+import { AppController } from '../src/app.controller';
+import { AppService } from '../src/app.service';
 
-describe('AppController (e2e)', () => {
-  let app: INestApplication;
+describe('App (e2e)', () => {
+  let app: NestFastifyApplication;
 
-  beforeEach(async () => {
+  beforeAll(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
-      imports: [AppModule],
+      controllers: [AppController],
+      providers: [AppService],
     }).compile();
 
-    app = moduleFixture.createNestApplication();
+    app = moduleFixture.createNestApplication<NestFastifyApplication>(
+      new FastifyAdapter(),
+    );
     await app.init();
+    await app.getHttpAdapter().getInstance().ready();
   });
 
-  it('/ (GET)', () => {
-    return request(app.getHttpServer())
-      .get('/')
-      .expect(200)
-      .expect('Hello World!');
+  afterAll(async () => {
+    if (app) {
+      await app.close();
+    }
   });
 
-  describe('Warehouses', () => {
-    let warehouseId: string;
-
-    it('POST /warehouses', async () => {
-      const response = await request(app.getHttpServer())
-        .post('/warehouses')
-        .send({
-          name: 'Test Warehouse',
-          location: 'Test Location',
-        })
-        .expect(201);
-
-      warehouseId = response.body.id;
-      expect(response.body.name).toBe('Test Warehouse');
-    });
-
-    it('GET /warehouses', () => {
+  describe('Health Check', () => {
+    it('/ (GET) - should return health status', () => {
       return request(app.getHttpServer())
-        .get('/warehouses')
+        .get('/')
         .expect(200)
         .then((response) => {
-          expect(Array.isArray(response.body)).toBe(true);
+          expect(response.body).toHaveProperty('message');
+          expect(response.body).toHaveProperty('status');
+          expect(response.body.status).toBe('running');
         });
-    });
-
-    it('GET /warehouses/:id', () => {
-      return request(app.getHttpServer())
-        .get(`/warehouses/${warehouseId}`)
-        .expect(200)
-        .then((response) => {
-          expect(response.body.name).toBe('Test Warehouse');
-        });
-    });
-
-    it('PATCH /warehouses/:id', () => {
-      return request(app.getHttpServer())
-        .patch(`/warehouses/${warehouseId}`)
-        .send({ name: 'Updated Warehouse' })
-        .expect(200)
-        .then((response) => {
-          expect(response.body.name).toBe('Updated Warehouse');
-        });
-    });
-
-    it('DELETE /warehouses/:id', () => {
-      return request(app.getHttpServer())
-        .delete(`/warehouses/${warehouseId}`)
-        .expect(204);
-    });
-  });
-
-  describe('Suppliers', () => {
-    let supplierId: string;
-
-    it('POST /suppliers', async () => {
-      const response = await request(app.getHttpServer())
-        .post('/suppliers')
-        .send({
-          name: 'Test Supplier',
-          contactName: 'Test Contact',
-          phone: '1234567890',
-        })
-        .expect(201);
-
-      supplierId = response.body.id;
-      expect(response.body.name).toBe('Test Supplier');
-    });
-
-    it('GET /suppliers', () => {
-      return request(app.getHttpServer())
-        .get('/suppliers')
-        .expect(200)
-        .then((response) => {
-          expect(Array.isArray(response.body)).toBe(true);
-        });
-    });
-
-    it('GET /suppliers/:id', () => {
-      return request(app.getHttpServer())
-        .get(`/suppliers/${supplierId}`)
-        .expect(200)
-        .then((response) => {
-          expect(response.body.name).toBe('Test Supplier');
-        });
-    });
-
-    it('PATCH /suppliers/:id', () => {
-      return request(app.getHttpServer())
-        .patch(`/suppliers/${supplierId}`)
-        .send({ name: 'Updated Supplier' })
-        .expect(200)
-        .then((response) => {
-          expect(response.body.name).toBe('Updated Supplier');
-        });
-    });
-
-    it('DELETE /suppliers/:id', () => {
-      return request(app.getHttpServer())
-        .delete(`/suppliers/${supplierId}`)
-        .expect(204);
     });
   });
 });
+
+// Integration tests with mocked dependencies are available in:
+// - test/auth.integration.spec.ts
+// - test/users.integration.spec.ts
+// - test/health.integration.spec.ts

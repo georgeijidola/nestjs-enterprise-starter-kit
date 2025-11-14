@@ -1,6 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { Resend } from 'resend';
-import { AppConfiguration } from 'src/config/app.config';
+import { AppConfiguration } from '../../../config/app.config';
 
 @Injectable()
 export class EmailService {

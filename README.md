@@ -5,12 +5,14 @@ A production-grade NestJS boilerplate with essential enterprise features: authen
 ## 🏗️ Architecture
 
 ### Core Design Principles
+
 - **Domain-Driven Design**: Business logic organized by domain
 - **Layered Architecture**: Clear separation of concerns
 - **Dependency Injection**: Loose coupling via NestJS DI container
 - **Enterprise Patterns**: Guards, interceptors, decorators, middleware
 
 ### Project Structure
+
 ```
 src/
 ├── common/              # Shared functionality
@@ -49,13 +51,16 @@ src/
 ## 🛠️ Getting Started
 
 ### Prerequisites
+
 - Node.js (v18+)
 - Docker and Docker Compose
 - PostgreSQL
 - Redis
 
 ### Environment Variables
+
 Create a `.env` file with the following:
+
 ```env
 # Server
 PORT=3000
@@ -83,6 +88,7 @@ GCS_CREDENTIALS=
 ```
 
 ### Installation
+
 ```bash
 # Clone repository
 git clone <repository-url>
@@ -107,12 +113,14 @@ npm run prisma:seed
 ## 📚 API Endpoints
 
 ### Authentication
+
 ```bash
 POST /auth/signup              # User registration
 POST /auth/signin              # User login
 ```
 
 ### Users (Protected - Requires Auth)
+
 ```bash
 GET    /users                  # List all users (Admin only)
 GET    /users/:id              # Get user by ID
@@ -122,6 +130,7 @@ DELETE /users/:id              # Delete user (Admin only)
 ```
 
 ### API Keys (Protected - Requires Auth)
+
 ```bash
 GET    /api-keys               # List all API keys
 GET    /api-keys/:id           # Get API key details
@@ -131,6 +140,7 @@ DELETE /api-keys/:id           # Revoke API key
 ```
 
 ### Health & Monitoring
+
 ```bash
 GET  /                         # Basic health check
 GET  /health                   # Comprehensive health status
@@ -140,6 +150,7 @@ GET  /health/server            # Server health
 ```
 
 ### Documentation
+
 ```bash
 GET  /docs                     # Swagger UI
 ```
@@ -166,6 +177,7 @@ npm run prisma:format # Format Prisma schema
 ## 🏢 Enterprise Features
 
 ### ✅ Authentication & Authorization
+
 - JWT-based authentication with configurable expiry
 - Role-based access control (USER, ADMIN)
 - Password hashing with Argon2 (more secure than bcrypt)
@@ -174,6 +186,7 @@ npm run prisma:format # Format Prisma schema
 - CurrentUser decorator for easy user access in controllers
 
 ### ✅ API Key Management
+
 - Secure API key generation with crypto
 - API key hashing with Argon2
 - Whitelist support (IP addresses, domains, CIDR ranges)
@@ -183,6 +196,7 @@ npm run prisma:format # Format Prisma schema
 - API key guard for public API access
 
 ### ✅ Audit Logging
+
 - Comprehensive audit trail for all actions
 - User action tracking (signin, password reset, API key operations)
 - Structured audit logs with JSON details
@@ -191,6 +205,7 @@ npm run prisma:format # Format Prisma schema
 - Automatic error handling
 
 ### ✅ Database & ORM
+
 - Prisma ORM 6 with PostgreSQL
 - Multi-schema support (user.prisma, api-key.prisma, audit.prisma)
 - Type-safe database queries
@@ -199,6 +214,7 @@ npm run prisma:format # Format Prisma schema
 - Connection pooling
 
 ### ✅ Caching Strategy
+
 - Redis integration via cache-manager
 - Service-level caching (users list, individual users)
 - Configurable TTL (default 300s)
@@ -206,6 +222,7 @@ npm run prisma:format # Format Prisma schema
 - Performance optimization for read-heavy operations
 
 ### ✅ File Storage
+
 - Google Cloud Storage integration
 - Configurable bucket and credentials
 - Support for key file or JSON credentials
@@ -213,6 +230,7 @@ npm run prisma:format # Format Prisma schema
 - Secure file management
 
 ### ✅ Email Service
+
 - Resend API integration
 - Configurable sender email
 - HTML and text email support
@@ -220,6 +238,7 @@ npm run prisma:format # Format Prisma schema
 - Template support
 
 ### ✅ Health Monitoring
+
 - Multiple health check endpoints
 - Database connectivity check (Prisma)
 - Redis connectivity check
@@ -228,6 +247,7 @@ npm run prisma:format # Format Prisma schema
 - Custom health indicators
 
 ### ✅ Validation & Security
+
 - Global validation pipes with class-validator
 - Input sanitization
 - Structured error responses (ErrorResponse, SuccessResponse)
@@ -236,6 +256,7 @@ npm run prisma:format # Format Prisma schema
 - API key authentication for public endpoints
 
 ### ✅ Configuration Management
+
 - Centralized AppConfiguration service
 - Environment variable validation at startup
 - Type-safe configuration access
@@ -244,8 +265,9 @@ npm run prisma:format # Format Prisma schema
 - Comprehensive error messages
 
 ### ✅ Code Quality
+
 - Pre-commit hooks (test, lint, format, prisma format)
-- 31 passing unit tests
+- Over 31 passing unit tests
 - ESLint with TypeScript support
 - Prettier code formatting
 - Husky for git hooks
@@ -254,6 +276,7 @@ npm run prisma:format # Format Prisma schema
 ## 🔄 CI/CD Ready
 
 The starter kit includes:
+
 - Pre-commit hooks (test, lint, format)
 - Docker configuration (docker-compose.yml)
 - Environment management (.env.example)
@@ -270,6 +293,7 @@ The starter kit includes:
 ## 🎯 Use Cases
 
 Perfect for:
+
 - Enterprise web applications
 - SaaS platforms with multi-tenancy
 - API-first development
@@ -329,4 +353,4 @@ npm run format                 # Format code
 
 ---
 
-**Built with ❤️ for enterprise-grade applications**
+**Built for enterprise-grade applications**

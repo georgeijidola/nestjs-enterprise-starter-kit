@@ -1,6 +1,6 @@
 model AuditLog {
   auditId   String      @id @default(uuid()) @db.Uuid
-  userId    String?     @db.Uuid
+  userId    String?
   userEmail String?     @db.VarChar(255)
   action    AuditAction
   message   String?     @db.VarChar(255)

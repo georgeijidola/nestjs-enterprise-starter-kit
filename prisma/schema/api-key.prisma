@@ -10,7 +10,7 @@ model ApiKey {
   keyHash     String       @unique @db.VarChar(255)
   status      ApiKeyStatus @default(ACTIVE)
   description String?      @db.Text
-  createdById String       @db.Uuid
+  createdById String
   expiresAt   DateTime?    @db.Timestamp()
   lastUsedAt  DateTime?    @db.Timestamp()
   createdAt   DateTime     @default(now())
