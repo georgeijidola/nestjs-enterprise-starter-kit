@@ -12,26 +12,26 @@ import { ApiTags, ApiOperation, ApiBearerAuth } from '@nestjs/swagger';
 import { UsersService } from '../services/users.service';
 import { CreateUserDto } from '../dto/create-user.dto';
 import { UpdateUserDto } from '../dto/update-user.dto';
-import { AuthGuard } from '../../../common/guards/auth.guard';
 import { RolesGuard } from '../../../common/guards/roles.guard';
 import { Roles } from 'src/common/decorators/roles.decorator';
+import { UserRole } from '@prisma/client';
 
 @ApiTags('users')
 @ApiBearerAuth()
-@UseGuards(AuthGuard, RolesGuard)
+@UseGuards(RolesGuard)
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Post()
-  @Roles('ADMIN')
+  @Roles(UserRole.ADMIN)
   @ApiOperation({ summary: 'Create a new user' })
   create(@Body() createUserDto: CreateUserDto) {
     return this.usersService.create(createUserDto);
   }
 
   @Get()
-  @Roles('ADMIN')
+  @Roles(UserRole.ADMIN)
   @ApiOperation({ summary: 'Get all users' })
   findAll() {
     return this.usersService.findAll();
@@ -50,7 +50,7 @@ export class UsersController {
   }
 
   @Delete(':id')
-  @Roles('ADMIN')
+  @Roles(UserRole.ADMIN)
   @ApiOperation({ summary: 'Delete user' })
   remove(@Param('id') id: string) {
     return this.usersService.remove(id);

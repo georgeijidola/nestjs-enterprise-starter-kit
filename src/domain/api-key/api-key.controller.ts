@@ -30,7 +30,6 @@ import {
   CreateApiKeyResponseDto,
   ApiKeyListResponseDto,
 } from './dto/api-key-response.dto';
-import { AuthGuard } from '../../common/guards/auth.guard';
 import { RolesGuard } from '../../common/guards/roles.guard';
 import { Roles } from '../../common/decorators/roles.decorator';
 import { UserRole } from '@prisma/client';
@@ -39,7 +38,7 @@ import { ErrorResponse } from '../../common/api/response/error-response/error-re
 
 @ApiTags('API Keys Management')
 @Controller('admin/api-keys')
-@UseGuards(AuthGuard, RolesGuard)
+@UseGuards(RolesGuard)
 @Roles(UserRole.ADMIN)
 @ApiBearerAuth()
 export class ApiKeyController {

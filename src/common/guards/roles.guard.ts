@@ -5,7 +5,6 @@ import {
   ForbiddenException,
 } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
-import { FastifyRequest } from 'fastify';
 import { UserRole } from '@prisma/client';
 
 @Injectable()
@@ -22,8 +21,9 @@ export class RolesGuard implements CanActivate {
       return true;
     }
 
-    const request = context.switchToHttp().getRequest<FastifyRequest>();
-    const user = request.user;
+    const request = context.switchToHttp().getRequest();
+
+    const user = request.raw.user;
 
     if (!user) {
       throw new ForbiddenException('User not authenticated');

@@ -5,6 +5,7 @@ import {
 } from '@nestjs/platform-fastify';
 import { ValidationPipe } from '@nestjs/common';
 import request from 'supertest';
+import { faker } from '@faker-js/faker';
 import { UsersModule } from '../src/domain/users/users.module';
 import { PrismaClient } from '@prisma/client';
 import { CacheService } from '../src/common/helpers/cache/cache.service';
@@ -75,9 +76,9 @@ describe('Users Integration Tests', () => {
     it('should return list of users', async () => {
       const mockUsers = [
         {
-          id: 'user-1',
-          name: 'User 1',
-          email: 'user1@example.com',
+          id: faker.string.uuid(),
+          name: faker.person.fullName(),
+          email: `${faker.string.alphanumeric(10)}@mailinator.com`,
           role: 'USER',
           createdAt: new Date(),
         },
@@ -98,9 +99,9 @@ describe('Users Integration Tests', () => {
   describe('GET /users/:id', () => {
     it('should return user by id', async () => {
       const mockUser = {
-        id: 'user-1',
-        name: 'User 1',
-        email: 'user1@example.com',
+        id: faker.string.uuid(),
+        name: faker.person.fullName(),
+        email: `${faker.string.alphanumeric(10)}@mailinator.com`,
         role: 'USER',
         createdAt: new Date(),
       };
@@ -120,8 +121,8 @@ describe('Users Integration Tests', () => {
   describe('POST /users', () => {
     it('should create new user', async () => {
       const newUser = {
-        name: 'New User',
-        email: 'newuser@example.com',
+        name: faker.person.fullName(),
+        email: `${faker.string.alphanumeric(10)}@mailinator.com`,
         role: 'USER',
       };
 
@@ -147,7 +148,7 @@ describe('Users Integration Tests', () => {
       await request(app.getHttpServer())
         .post('/users')
         .send({
-          name: 'Test User',
+          name: faker.person.fullName(),
           email: 'invalid-email',
         })
         .expect(400);
@@ -157,13 +158,13 @@ describe('Users Integration Tests', () => {
   describe('PATCH /users/:id', () => {
     it('should update user', async () => {
       const updateData = {
-        name: 'Updated Name',
+        name: faker.person.fullName(),
       };
 
       mockPrismaClient.user.update.mockResolvedValue({
-        id: 'user-1',
+        id: faker.string.uuid(),
         name: updateData.name,
-        email: 'user1@example.com',
+        email: `${faker.string.alphanumeric(10)}@mailinator.com`,
         password: 'hashed',
         role: 'USER',
         isActive: true,

@@ -65,7 +65,7 @@ export class PasswordUtil {
    * Checks if new password is different from current password
    * @param newPassword - The new password
    * @param currentPassword - The current hashed password
-   * @param compareFunction - Function to compare passwords (e.g., bcrypt.compare)
+   * @param compareFunction - Function to compare passwords (e.g., argon2.verify)
    * @returns Promise<boolean> indicating if passwords are different
    */
   static async isPasswordDifferent(

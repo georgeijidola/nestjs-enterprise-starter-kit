@@ -3,7 +3,7 @@ import { JwtService } from '@nestjs/jwt';
 import { PrismaService } from '../../../loaders/database/prisma.loader';
 import { SignInDto } from '../dto/sign-in.dto';
 import { SignUpDto } from '../dto/sign-up.dto';
-import * as bcrypt from 'bcrypt';
+import * as argon2 from 'argon2';
 
 @Injectable()
 export class AuthService {
@@ -13,7 +13,7 @@ export class AuthService {
   ) {}
 
   async signUp(signUpDto: SignUpDto) {
-    const hashedPassword = await bcrypt.hash(signUpDto.password, 10);
+    const hashedPassword = await argon2.hash(signUpDto.password);
 
     const user = await this.prisma.user.create({
       data: {
@@ -31,14 +31,14 @@ export class AuthService {
       where: { email: signInDto.email },
     });
 
-    if (!user || !(await bcrypt.compare(signInDto.password, user.password))) {
+    if (!user || !(await argon2.verify(user.password, signInDto.password))) {
       throw new UnauthorizedException('Invalid credentials');
     }
 
-    const payload = { sub: user.id, email: user.email };
+    const payload = { userId: user.id, email: user.email };
     return {
       access_token: this.jwtService.sign(payload),
-      user: { id: user.id, name: user.name, email: user.email },
+      user: { ...user, password: undefined },
     };
   }
 }

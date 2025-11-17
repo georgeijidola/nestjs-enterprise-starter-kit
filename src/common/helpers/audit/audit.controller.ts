@@ -9,7 +9,6 @@ import {
   HttpStatus,
 } from '@nestjs/common';
 import { AuditService } from './services/audit.service';
-import { AuthGuard } from '../../guards/auth.guard';
 import { RolesGuard } from '../../guards/roles.guard';
 import { Roles } from '../../decorators/roles.decorator';
 import { UserRole, AuditAction } from '@prisma/client';
@@ -31,7 +30,7 @@ export class AuditController {
 
   @Get()
   @HttpCode(HttpStatus.OK)
-  @UseGuards(AuthGuard, RolesGuard)
+  @UseGuards(RolesGuard)
   @Roles(UserRole.ADMIN)
   @ApiOperation({ summary: 'Get audit logs' })
   @ApiOkResponse({ description: 'Audit logs returned' })

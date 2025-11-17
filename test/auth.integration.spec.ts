@@ -5,6 +5,7 @@ import {
 } from '@nestjs/platform-fastify';
 import { ValidationPipe } from '@nestjs/common';
 import request from 'supertest';
+import { faker } from '@faker-js/faker';
 import { AuthModule } from '../src/domain/auth/auth.module';
 import { PrismaClient } from '@prisma/client';
 import { ConfigService } from '@nestjs/config';
@@ -70,9 +71,9 @@ describe('Auth Integration Tests', () => {
   describe('POST /auth/signup', () => {
     it('should register a new user', async () => {
       const newUser = {
-        name: 'Test User',
-        email: 'test@example.com',
-        password: 'Test123!@#',
+        name: faker.person.fullName(),
+        email: `${faker.string.alphanumeric(10)}@mailinator.com`,
+        password: faker.internet.password({ length: 12 }),
       };
 
       mockPrismaClient.user.findUnique.mockResolvedValue(null);
@@ -100,9 +101,9 @@ describe('Auth Integration Tests', () => {
       await request(app.getHttpServer())
         .post('/auth/signup')
         .send({
-          name: 'Test User',
+          name: faker.person.fullName(),
           email: 'invalid-email',
-          password: 'Test123!@#',
+          password: faker.internet.password({ length: 12 }),
         })
         .expect(400);
     });
@@ -111,7 +112,7 @@ describe('Auth Integration Tests', () => {
       await request(app.getHttpServer())
         .post('/auth/signup')
         .send({
-          email: 'test@example.com',
+          email: `${faker.string.alphanumeric(10)}@mailinator.com`,
         })
         .expect(400);
     });
@@ -120,8 +121,8 @@ describe('Auth Integration Tests', () => {
   describe('POST /auth/signin', () => {
     it('should login existing user', async () => {
       const credentials = {
-        email: 'test@example.com',
-        password: 'Test123!@#',
+        email: `${faker.string.alphanumeric(10)}@mailinator.com`,
+        password: faker.internet.password({ length: 12 }),
       };
 
       mockPrismaClient.user.findUnique.mockResolvedValue({
@@ -147,7 +148,7 @@ describe('Auth Integration Tests', () => {
         .post('/auth/signin')
         .send({
           email: 'invalid-email',
-          password: 'Test123!@#',
+          password: faker.internet.password({ length: 12 }),
         })
         .expect(400);
     });

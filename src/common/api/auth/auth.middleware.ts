@@ -1,9 +1,12 @@
-import { Injectable, NestMiddleware } from '@nestjs/common';
+import {
+  Injectable,
+  NestMiddleware,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { PrismaClient } from '@prisma/client';
 import { FastifyReply, FastifyRequest } from 'fastify';
 import { AppConfiguration } from '../../../config/app.config';
 import { AuthenticationUtilityService } from '../../helpers/authentication-utility/authentication-utility.service';
-import { UserExistenceUtil } from '../../utils/user-existence.util';
 
 @Injectable()
 export class AuthMiddleware implements NestMiddleware {
@@ -13,24 +16,33 @@ export class AuthMiddleware implements NestMiddleware {
     private prismaClient: PrismaClient,
   ) {}
 
-  async use(req: FastifyRequest, res: FastifyReply, next: () => void) {
-    const token = req.headers.authorization;
+  async use(
+    req: FastifyRequest,
+    res: FastifyReply,
+    next: (error?: Error | unknown) => void,
+  ) {
+    try {
+      const token = req.headers.authorization;
+      const [userId] = this.authenticationUtilityService.decipherToken(token);
 
-    const userId: string =
-      this.authenticationUtilityService.decipherToken(token)[0];
+      if (!userId) {
+        throw new UnauthorizedException('Invalid token');
+      }
 
-    const user = await UserExistenceUtil.assertUserExistsById(
-      userId,
-      this.prismaClient,
-      'User',
-      {
-        id: true,
-        role: true,
-      },
-    );
+      const user = await this.prismaClient.user.findUnique({
+        where: { id: userId },
+        select: { id: true, role: true, isEmailVerified: true },
+      });
 
-    req.user = user;
+      if (!user) {
+        throw new UnauthorizedException('User not found');
+      }
 
-    next();
+      req.user = user;
+
+      next();
+    } catch (error) {
+      next(error);
+    }
   }
 }

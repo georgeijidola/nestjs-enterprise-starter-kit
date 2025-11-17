@@ -43,7 +43,7 @@ describe('AuthenticationUtilityService', () => {
       expect(
         await service.comparePassword(faker.internet.password(), hashed),
       ).toBe(false);
-    }, 15000); // Increased timeout to 15 seconds for bcrypt operations
+    }, 15000); // Increased timeout to 15 seconds for argon2 operations
   });
 
   describe('signToken & decipherToken', () => {

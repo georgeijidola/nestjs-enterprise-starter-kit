@@ -1,30 +1,31 @@
-import { PrismaClient } from '@prisma/client';
-import * as bcrypt from 'bcrypt';
+import { PrismaClient, UserRole } from '@prisma/client';
+import { faker } from '@faker-js/faker';
+import * as argon2 from 'argon2';
 
 const prisma = new PrismaClient();
 
 async function main() {
   // Create admin user
-  const adminPassword = await bcrypt.hash('admin123', 10);
+  const adminPassword = await argon2.hash('Admin123!@#');
   await prisma.user.upsert({
-    where: { email: 'admin@example.com' },
+    where: { email: 'admin@mailinator.com' },
     update: {},
     create: {
-      name: 'Admin User',
-      email: 'admin@example.com',
+      name: faker.person.fullName(),
+      email: 'admin@mailinator.com',
       password: adminPassword,
-      role: 'ADMIN',
+      role: UserRole.ADMIN,
     },
   });
 
   // Create regular user
-  const userPassword = await bcrypt.hash('user123', 10);
+  const userPassword = await argon2.hash('User123!@#');
   await prisma.user.upsert({
-    where: { email: 'user@example.com' },
+    where: { email: 'user@mailinator.com' },
     update: {},
     create: {
-      name: 'Regular User',
-      email: 'user@example.com',
+      name: faker.person.fullName(),
+      email: 'user@mailinator.com',
       password: userPassword,
       role: 'USER',
     },
