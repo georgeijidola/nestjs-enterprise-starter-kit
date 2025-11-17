@@ -1,4 +1,9 @@
-import { Module, NestModule, MiddlewareConsumer, forwardRef } from '@nestjs/common';
+import {
+  Module,
+  NestModule,
+  MiddlewareConsumer,
+  forwardRef,
+} from '@nestjs/common';
 import { AuditService } from './services/audit.service';
 import { AuditController } from './audit.controller';
 import { CommonModule } from '../../common.module';
