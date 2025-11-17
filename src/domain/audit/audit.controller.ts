@@ -8,9 +8,9 @@ import {
   HttpCode,
   HttpStatus,
 } from '@nestjs/common';
-import { AuditService } from './services/audit.service';
-import { RolesGuard } from '../../guards/roles.guard';
-import { Roles } from '../../decorators/roles.decorator';
+import { AuditService } from '../../common/helpers/audit/services/audit.service';
+import { RolesGuard } from '../../common/guards/roles.guard';
+import { Roles } from '../../common/decorators/roles.decorator';
 import { UserRole, AuditAction } from '@prisma/client';
 import {
   ApiBadRequestResponse,

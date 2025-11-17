@@ -1,4 +1,4 @@
-import { Module, forwardRef } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { TerminusModule } from '@nestjs/terminus';
 import { PrismaClient } from '@prisma/client';
 import { CacheService } from './helpers/cache/cache.service';
@@ -9,14 +9,14 @@ import { ApiKeyGuard } from './guards/api-key.guard';
 import { ApiKeyService } from '../domain/api-key/services/api-key.service';
 import { AppConfiguration } from '../config/app.config';
 import { AuditService } from './helpers/audit/services/audit.service';
-import { AuditModule } from './helpers/audit/audit.module';
+
 import { AuthenticationUtilityService } from './helpers/authentication-utility/authentication-utility.service';
 import { AuthMiddleware } from './api/auth/auth.middleware';
 import { RedisHealthIndicator } from '../health/redis-health.indicator';
 import { ServerHealthIndicator } from '../health/server-health.indicator';
 
 @Module({
-  imports: [TerminusModule, forwardRef(() => AuditModule)],
+  imports: [TerminusModule],
   providers: [
     PrismaClient,
     RedisHealthIndicator,
