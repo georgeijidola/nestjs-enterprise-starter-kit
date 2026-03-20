@@ -79,7 +79,6 @@ export const FastifyLoader = (app: NestFastifyApplication) => {
 
   const document = SwaggerModule.createDocument(app, swaggerConfig);
 
-  // Apply api-key security globally to all endpoints
   if (document.paths) {
     Object.keys(document.paths).forEach((path) => {
       Object.keys(document.paths[path]).forEach((method) => {
@@ -87,7 +86,6 @@ export const FastifyLoader = (app: NestFastifyApplication) => {
         if (operation && !operation.security) {
           operation.security = [{ 'api-key': [] }];
         } else if (operation && operation.security) {
-          // Add api-key to existing security if not already present
           const hasApiKey = operation.security.some((sec) => sec['api-key']);
           if (!hasApiKey) {
             operation.security.push({ 'api-key': [] });

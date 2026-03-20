@@ -87,10 +87,9 @@ export class ApiKeyService {
 
     this.logger.log(`API key created: ${dto.name} by admin ${adminId}`);
 
-    // Log the API key creation in audit service
     await this.auditService.log({
       userId: adminId,
-      userEmail: 'admin', // You might want to get the actual admin email
+      userEmail: 'admin',
       action: AuditAction.API_KEY_CREATE,
       message: `Created API key: ${dto.name}`,
       method: 'POST',
@@ -238,9 +237,8 @@ export class ApiKeyService {
 
     this.logger.log(`API key updated: ${id}`);
 
-    // Log the API key update in audit service
     await this.auditService.log({
-      userId: 'admin', // You might want to pass this as a parameter
+      userId: 'admin',
       userEmail: 'admin',
       action: AuditAction.API_KEY_UPDATE,
       message: `Updated API key: ${dto.name || existingKey.name}`,
@@ -272,9 +270,8 @@ export class ApiKeyService {
 
     this.logger.log(`API key revoked: ${id}`);
 
-    // Log the API key revocation in audit service
     await this.auditService.log({
-      userId: 'admin', // You might want to pass this as a parameter
+      userId: 'admin',
       userEmail: 'admin',
       action: AuditAction.API_KEY_REVOKE,
       message: `Revoked API key: ${apiKey.name}`,
@@ -412,7 +409,7 @@ export class ApiKeyService {
                 return true;
               }
             } catch {
-              // Invalid origin URL, skip
+              // skip invalid origin
             }
           }
           break;

@@ -16,7 +16,7 @@ export class UsersService {
       data: {
         name: createUserDto.name,
         email: createUserDto.email,
-        password: 'temp-password', // Should be hashed in real implementation
+        password: 'temp-password',
         role: (createUserDto.role as UserRole) || UserRole.USER,
       },
     });

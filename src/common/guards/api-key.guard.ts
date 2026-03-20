@@ -17,7 +17,6 @@ export class ApiKeyGuard implements CanActivate {
   ) {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
-    // Check if API key validation is enabled
     const isEnabled = process.env.API_KEY_ENABLED === 'true';
     if (!isEnabled) {
       return true;

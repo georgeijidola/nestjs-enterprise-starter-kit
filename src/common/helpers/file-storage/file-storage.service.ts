@@ -65,12 +65,6 @@ export class FileStorageService {
     );
   }
 
-  /**
-   * Upload a file to Google Cloud Storage
-   * @param fileBuffer - The file content as a Buffer
-   * @param options - Upload options including destination path and metadata
-   * @returns Promise<FileUploadResult> - Information about the uploaded file
-   */
   async uploadFile(
     fileBuffer: Buffer,
     options: UploadOptions,
@@ -151,12 +145,6 @@ export class FileStorageService {
     }
   }
 
-  /**
-   * Upload multiple files to Google Cloud Storage (atomic operation)
-   * @param files - Array of file data with buffers and options
-   * @returns Promise<MultipleFileUploadResult> - Results of all uploads
-   * @throws Error if any upload fails (after cleaning up successful uploads)
-   */
   async uploadMultipleFiles(
     files: Array<{ buffer: Buffer; options: UploadOptions }>,
   ): Promise<MultipleFileUploadResult> {
@@ -207,12 +195,6 @@ export class FileStorageService {
     };
   }
 
-  /**
-   * Upload a file from a stream to Google Cloud Storage
-   * @param stream - Readable stream containing file data
-   * @param options - Upload options including destination path and metadata
-   * @returns Promise<FileUploadResult> - Information about the uploaded file
-   */
   async uploadFileFromStream(
     stream: Readable,
     options: UploadOptions,
@@ -298,12 +280,6 @@ export class FileStorageService {
     }
   }
 
-  /**
-   * Retrieve a file from Google Cloud Storage
-   * @param filePath - The path to the file in the bucket
-   * @param options - Download options (optional byte range)
-   * @returns Promise<Buffer> - The file content as a Buffer
-   */
   async getFile(filePath: string, options?: DownloadOptions): Promise<Buffer> {
     try {
       this.logger.log(`Retrieving file: ${filePath}`);
@@ -337,11 +313,6 @@ export class FileStorageService {
     }
   }
 
-  /**
-   * Get a readable stream for a file from Google Cloud Storage
-   * @param filePath - The path to the file in the bucket
-   * @returns Readable - A readable stream of the file content
-   */
   getFileStream(filePath: string): Readable {
     try {
       this.logger.log(`Creating read stream for file: ${filePath}`);
@@ -360,12 +331,6 @@ export class FileStorageService {
     }
   }
 
-  /**
-   * Delete a file from Google Cloud Storage
-   * @param filePath - The path to the file to delete
-   * @returns Promise<void>
-   * @throws NotFoundException if file doesn't exist
-   */
   async deleteFile(filePath: string): Promise<void> {
     try {
       this.logger.log(`Deleting file: ${filePath}`);
@@ -392,11 +357,6 @@ export class FileStorageService {
     }
   }
 
-  /**
-   * Delete multiple files from Google Cloud Storage
-   * @param filePaths - Array of file paths to delete
-   * @returns Promise<{ deleted: string[]; failed: string[] }> - Results of the deletion operation
-   */
   async deleteFiles(
     filePaths: string[],
   ): Promise<{ deleted: string[]; failed: string[] }> {
@@ -423,11 +383,6 @@ export class FileStorageService {
     return { deleted, failed };
   }
 
-  /**
-   * Check if a file exists in Google Cloud Storage
-   * @param filePath - The path to check
-   * @returns Promise<boolean> - True if file exists, false otherwise
-   */
   async fileExists(filePath: string): Promise<boolean> {
     try {
       const file: File = this.bucket.file(filePath);
@@ -443,11 +398,6 @@ export class FileStorageService {
     }
   }
 
-  /**
-   * Get file metadata from Google Cloud Storage
-   * @param filePath - The path to the file
-   * @returns Promise<any> - File metadata
-   */
   async getFileMetadata(filePath: string): Promise<{
     name?: string;
     size?: string | number;

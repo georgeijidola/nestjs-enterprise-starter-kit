@@ -32,9 +32,6 @@ export class AuditService {
     }
   }
 
-  /**
-   * Get audit logs with pagination
-   */
   async getAuditLogs(
     page: number = 1,
     limit: number = 20,

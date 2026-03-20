@@ -1,15 +1,36 @@
-FROM node:22-alpine
-WORKDIR /code
+FROM node:23.5-alpine3.20 AS builder
+WORKDIR /app
 
-COPY package.json ./
-RUN npm i -g husky
-RUN npm i -g @nestjs/cli
-RUN npm i -D @types/node
+RUN apk upgrade --no-cache && \
+    apk add --no-cache dumb-init
+
+COPY package*.json ./
+RUN npm ci --only=production && \
+    npm cache clean --force
 
 COPY prisma ./prisma
-RUN npm run prisma:generate
+RUN npx prisma generate
 
-COPY . .
-RUN npm run build
+COPY tsconfig*.json nest-cli.json ./
+COPY src ./src
+RUN npm ci && \
+    npm run build
 
-CMD [ "npm", "run", "start:prod" ]
+FROM node:23.5-alpine3.20
+WORKDIR /app
+
+RUN apk upgrade --no-cache && \
+    apk add --no-cache dumb-init && \
+    addgroup -g 1001 -S nodejs && \
+    adduser -S nestjs -u 1001
+
+COPY --from=builder --chown=nestjs:nodejs /app/node_modules ./node_modules
+COPY --from=builder --chown=nestjs:nodejs /app/dist ./dist
+COPY --from=builder --chown=nestjs:nodejs /app/prisma ./prisma
+COPY --chown=nestjs:nodejs package.json ./
+
+USER nestjs
+EXPOSE 3000
+
+ENTRYPOINT ["dumb-init", "--"]
+CMD ["node", "dist/main"]

@@ -77,7 +77,6 @@ export class AppConfiguration {
   }
 
   private loadAndValidateConfig(): void {
-    // Load all configuration values and assign to decorated properties
     this._port = this.getRequiredNumber('PORT', 3000);
     this._serverIp = this.getRequiredString('SERVER_IP', '0.0.0.0');
     this._jwtSecret = this.getRequiredString('JWT_SECRET');
@@ -164,7 +163,6 @@ export class AppConfiguration {
 
   // SERVER CONFIGURATION
   get port(): number {
-    // Additional runtime validation on top of class-validator
     if (this._port < 1 || this._port > 65535) {
       AppConfiguration.logger.warn(
         `Invalid port number: ${this._port}, using fallback: 3000`,
@@ -175,7 +173,6 @@ export class AppConfiguration {
   }
 
   get serverIp(): string {
-    // Additional IP validation on top of class-validator @IsIP
     if (!this.validateIpAddress(this._serverIp)) {
       AppConfiguration.logger.warn(
         `Invalid IP address format: ${this._serverIp}, using fallback: 0.0.0.0`,
@@ -187,7 +184,6 @@ export class AppConfiguration {
 
   // JWT CONFIGURATION
   get jwtSecret(): string {
-    // Additional length validation on top of class-validator @MinLength
     if (this._jwtSecret.length < 32) {
       AppConfiguration.logger.warn(
         'JWT_SECRET should be at least 32 characters for security',
@@ -197,9 +193,7 @@ export class AppConfiguration {
   }
 
   get jwtSecretExpire(): number {
-    // Additional range validation
     if (this._jwtSecretExpire < 300) {
-      // Minimum 5 minutes
       AppConfiguration.logger.warn(
         `JWT expiry too short: ${this._jwtSecretExpire}s, minimum recommended: 300s`,
       );
@@ -218,9 +212,7 @@ export class AppConfiguration {
 
   // CACHE CONFIGURATION
   get cacheTtl(): number {
-    // Additional range validation
     if (this._cacheTtl < 60) {
-      // Minimum 1 minute
       AppConfiguration.logger.warn(
         `Cache TTL too short: ${this._cacheTtl}s, minimum recommended: 60s`,
       );
@@ -275,13 +267,11 @@ export class AppConfiguration {
     }
   }
 
-  // CLASS-VALIDATOR VALIDATION METHOD
   public async validateWithClassValidator(): Promise<any[]> {
     const { validate } = await import('class-validator');
     return await validate(this);
   }
 
-  // UTILITY METHOD FOR DEBUGGING
   public validateAllConfigs(): { [key: string]: boolean } {
     const results: { [key: string]: boolean } = {};
 
