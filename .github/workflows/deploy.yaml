@@ -1,62 +1,66 @@
 name: Deploy NestJS App
 
 on:
-    push:
-        branches: [development, staging, main]
+  push:
+    branches: [development, staging, main]
 
 jobs:
-    test:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout Code
-              uses: actions/checkout@v4
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
-            - name: Setup Node
-              uses: actions/setup-node@v4
-              with:
-                  node-version: 23.5
-                  cache: 'npm'
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 23.5
+          cache: 'npm'
 
-            - name: Install Dependencies
-              run: npm ci
+      - name: Install Dependencies
+        run: npm ci
 
-            - name: Run Tests
-              run: npm test
+      - name: Run Tests
+        run: npm test
 
-    deploy:
-        runs-on: ubuntu-latest
-        needs: test
-        steps:
-            - name: Checkout Code
-              uses: actions/checkout@v4
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
+    permissions:
+      contents: read
+      id-token: write
+    environment: ${{ github.ref_name == 'main' && 'production' || github.ref_name == 'staging' && 'staging' || 'development' }}
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
-            - name: Set Full Environment Names
-              id: env_spec
-              run: |
-                  if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
-                    echo "target=production" >> $GITHUB_OUTPUT
-                  elif [[ "${{ github.ref }}" == "refs/heads/staging" ]]; then
-                    echo "target=staging" >> $GITHUB_OUTPUT
-                  else
-                    echo "target=development" >> $GITHUB_OUTPUT
-                  fi
+      - name: Set Full Environment Names
+        id: env_spec
+        run: |
+          if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
+            echo "target=production" >> $GITHUB_OUTPUT
+          elif [[ "${{ github.ref }}" == "refs/heads/staging" ]]; then
+            echo "target=staging" >> $GITHUB_OUTPUT
+          else
+            echo "target=development" >> $GITHUB_OUTPUT
+          fi
 
-            - name: Google Auth
-              uses: 'google-github-actions/auth@v2'
-              with:
-                  workload_identity_provider: '${{ secrets.WIF_PROVIDER }}'
-                  service_account: '${{ secrets.WIF_SERVICE_ACCOUNT }}'
+      - name: Google Auth
+        uses: 'google-github-actions/auth@v2'
+        with:
+          workload_identity_provider: '${{ secrets.WIF_PROVIDER }}'
+          service_account: '${{ secrets.WIF_SERVICE_ACCOUNT }}'
 
-            - name: Build and Push Docker Image
-              run: |
-                  IMAGE_TAG="us-central1-docker.pkg.dev/${{ secrets.PROJECT_ID }}/app-repo/nestjs-enterprise-starter-kit:${{ github.sha }}"
-                  docker build -t $IMAGE_TAG .
-                  gcloud auth configure-docker us-central1-docker.pkg.dev
-                  docker push $IMAGE_TAG
+      - name: Build and Push Docker Image
+        run: |
+          IMAGE_TAG="us-central1-docker.pkg.dev/${{ secrets.PROJECT_ID }}/app-repo/nestjs-enterprise-starter-kit:${{ github.sha }}"
+          docker build -t $IMAGE_TAG .
+          gcloud auth configure-docker us-central1-docker.pkg.dev
+          docker push $IMAGE_TAG
 
-            - name: Deploy to GKE
-              run: |
-                  gcloud container clusters get-credentials ${{ secrets.CLUSTER_NAME }} --region us-central1
-                  kubectl set image deployment/nestjs-enterprise-starter-kit \
-                    nestjs-server=$IMAGE_TAG \
-                    --namespace=${{ steps.env_spec.outputs.target }}
+      - name: Deploy to GKE
+        run: |
+          gcloud container clusters get-credentials ${{ secrets.CLUSTER_NAME }} --region us-central1
+          kubectl set image deployment/nestjs-enterprise-starter-kit \
+            nestjs-server=$IMAGE_TAG \
+            --namespace=${{ steps.env_spec.outputs.target }}

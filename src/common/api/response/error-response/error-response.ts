@@ -39,7 +39,5 @@ export class ErrorResponse extends Error implements Response {
     this.errorCode = errorCode;
 
     Object.setPrototypeOf(this, ErrorResponse.prototype);
-
-    console.log('error =>', this);
   }
 }
