@@ -9,10 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/checkout@v4.2.2
+        uses: actions/setup-node@v4.4.0
         with:
           node-version: 23.5
           cache: 'npm'
@@ -32,9 +30,9 @@ jobs:
     environment: ${{ github.ref_name == 'main' && 'production' || github.ref_name == 'staging' && 'staging' || 'development' }}
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4.2.2
 
-      - name: Set Full Environment Names
+      - name: Setup Node Environment Names
         id: env_spec
         run: |
           if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
