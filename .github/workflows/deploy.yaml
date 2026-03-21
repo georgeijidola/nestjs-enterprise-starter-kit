@@ -53,7 +53,7 @@ jobs:
 
       - name: Build and Push Docker Image
         run: |
-          IMAGE_TAG="us-central1-docker.pkg.dev/${{ secrets.PROJECT_ID }}/app-repo/nestjs-enterprise-starter-kit:${{ github.sha }}"
+          IMAGE_TAG="us-central1-docker.pkg.dev/${{ secrets.PROJECT_ID }}/nestjs-enterprise-repo/nestjs-enterprise-starter-kit:${{ github.sha }}"
           docker build -t $IMAGE_TAG .
           gcloud auth configure-docker us-central1-docker.pkg.dev
           docker push $IMAGE_TAG
