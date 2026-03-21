@@ -3,7 +3,7 @@ WORKDIR /app
 
 COPY package*.json ./
 COPY prisma ./prisma
-COPY tsconfig*.json nest-cli.json ./
+COPY prisma.config.ts tsconfig*.json nest-cli.json ./
 COPY src ./src
 RUN npm ci --ignore-scripts && \
     npx prisma generate --config prisma.config.ts && \
