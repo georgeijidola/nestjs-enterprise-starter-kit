@@ -52,7 +52,9 @@ jobs:
           service_account: '${{ secrets.WIF_SERVICE_ACCOUNT }}'
 
       - name: Install GKE Auth Plugin
-        run: sudo apt-get install -y google-cloud-cli-gke-gcloud-auth-plugin
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y google-cloud-cli-gke-gcloud-auth-plugin
 
       - name: Build and Push Docker Image
         run: |
