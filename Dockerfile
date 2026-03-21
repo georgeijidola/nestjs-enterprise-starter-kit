@@ -25,4 +25,4 @@ COPY --chown=nestjs:nodejs package.json ./
 USER nestjs
 EXPOSE 3000
 
-CMD ["node", "dist/main"]
+CMD [ "npm", "run", "start:prod" ]
