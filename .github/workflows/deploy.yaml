@@ -51,6 +51,9 @@ jobs:
           workload_identity_provider: '${{ secrets.WIF_PROVIDER }}'
           service_account: '${{ secrets.WIF_SERVICE_ACCOUNT }}'
 
+      - name: Install GKE Auth Plugin
+        run: gcloud components install gke-gcloud-auth-plugin --quiet
+
       - name: Build and Push Docker Image
         run: |
           IMAGE_TAG="us-central1-docker.pkg.dev/${{ secrets.PROJECT_ID }}/nestjs-enterprise-repo/nestjs-enterprise-starter-kit:${{ github.sha }}"
