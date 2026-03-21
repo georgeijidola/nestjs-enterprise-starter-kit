@@ -1,8 +1,7 @@
 FROM node:23.5-alpine3.20 AS builder
 WORKDIR /app
 
-RUN apk upgrade --no-cache && \
-    apk add --no-cache dumb-init
+RUN apk add --no-cache dumb-init
 
 COPY package*.json ./
 RUN npm ci --only=production && \
