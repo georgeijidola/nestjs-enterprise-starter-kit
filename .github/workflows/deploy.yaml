@@ -9,9 +9,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
+        uses: actions/checkout@v4.2.2
+
+      - name: Setup Node
         uses: actions/setup-node@v4.4.0
         with:
-          node-version: 23.5
+          node-version-file: '.nvmrc'
           cache: 'npm'
 
       - name: Install Dependencies
