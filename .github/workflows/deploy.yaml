@@ -66,8 +66,10 @@ jobs:
           docker push $IMAGE_TAG
 
       - name: Deploy to GKE
+        env:
+          IMAGE_TAG: us-central1-docker.pkg.dev/${{ secrets.PROJECT_ID }}/nestjs-enterprise-repo/nestjs-enterprise-starter-kit:${{ github.sha }}
         run: |
           gcloud container clusters get-credentials ${{ secrets.CLUSTER_NAME }} --region us-central1
-          kubectl set image deployment/nestjs-enterprise-starter-kit \
-            nestjs-server=$IMAGE_TAG \
-            --namespace=${{ steps.env_spec.outputs.target }}
+          sed -i "s|REPLACE_WITH_IMAGE_TAG|$IMAGE_TAG|g" k8s/deployment.yaml
+          kubectl apply -f k8s/deployment.yaml --namespace=${{ steps.env_spec.outputs.target }}
+          kubectl rollout status deployment/nestjs-enterprise-starter-kit --namespace=${{ steps.env_spec.outputs.target }}
