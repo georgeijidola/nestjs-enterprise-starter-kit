@@ -22,6 +22,7 @@ async function bootstrap() {
     },
   );
   app.useGlobalInterceptors(new ExecutionTimeInterceptor());
+  app.enableShutdownHooks();
 
   const config = app.get(AppConfiguration);
   const { port, serverIp } = config;
