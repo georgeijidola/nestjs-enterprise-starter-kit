@@ -4,7 +4,7 @@ WORKDIR /app
 RUN apk add --no-cache dumb-init
 
 COPY package*.json ./
-RUN npm ci --only=production && \
+RUN npm ci --only=production --ignore-scripts && \
     npm cache clean --force
 
 COPY prisma ./prisma
@@ -12,7 +12,7 @@ RUN npx prisma generate
 
 COPY tsconfig*.json nest-cli.json ./
 COPY src ./src
-RUN npm ci && \
+RUN npm ci --ignore-scripts && \
     npm run build
 
 FROM node:23.5-alpine3.20
