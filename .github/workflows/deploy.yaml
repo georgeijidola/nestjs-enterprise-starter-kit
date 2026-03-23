@@ -59,17 +59,17 @@ jobs:
           sudo apt-get install -y google-cloud-cli-gke-gcloud-auth-plugin
 
       - name: Build and Push Docker Image
+        id: build_step
         run: |
-          IMAGE_TAG="us-central1-docker.pkg.dev/${{ secrets.PROJECT_ID }}/nestjs-enterprise-repo/nestjs-enterprise-starter-kit:${{ github.sha }}"
-          docker build -t $IMAGE_TAG .
+          TAG="us-central1-docker.pkg.dev/${{ secrets.PROJECT_ID }}/nestjs-enterprise-repo/nestjs-enterprise-starter-kit:${{ github.sha }}"
+          docker build -t $TAG .
           gcloud auth configure-docker us-central1-docker.pkg.dev
-          docker push $IMAGE_TAG
+          docker push $TAG
+          echo "image_tag=$TAG" >> $GITHUB_OUTPUT
 
-      - name: Deploy to GKE
-        env:
-          IMAGE_TAG: us-central1-docker.pkg.dev/${{ secrets.PROJECT_ID }}/nestjs-enterprise-repo/nestjs-enterprise-starter-kit:${{ github.sha }}
+      - name: Deploy to GKE via Kustomize
         run: |
           gcloud container clusters get-credentials ${{ secrets.CLUSTER_NAME }} --region us-central1
-          sed -i "s|REPLACE_WITH_IMAGE_TAG|$IMAGE_TAG|g" k8s/deployment.yaml
-          kubectl apply -f k8s/deployment.yaml --namespace=${{ steps.env_spec.outputs.target }}
-          kubectl rollout status deployment/nestjs-enterprise-starter-kit --namespace=${{ steps.env_spec.outputs.target }}
+          cd k8s/overlays/${{ steps.env_spec.outputs.target }}
+          kustomize edit set image REPLACE_WITH_IMAGE_TAG=${{ steps.build_step.outputs.image_tag }}
+          kubectl apply -k .

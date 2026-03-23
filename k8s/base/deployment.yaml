@@ -1,0 +1,71 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nestjs-enterprise-starter-kit
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nestjs-enterprise-starter-kit
+  template:
+    metadata:
+      labels:
+        app: nestjs-enterprise-starter-kit
+    spec:
+      containers:
+        - name: nestjs-server
+          image: REPLACE_WITH_IMAGE_TAG
+          ports:
+            - containerPort: 3000
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 250m
+              memory: 512Mi
+          env:
+            - name: NODE_ENV
+              value: 'production'
+            - name: PORT
+              value: '3000'
+            - name: DB_HOST
+              value: '127.0.0.1'
+            - name: DB_NAME
+              value: 'nestjs_enterprise_starter_kit'
+            - name: GCS_PROJECT_ID
+              value: 'nestjs-enterprise-starter-kit'
+            - name: GCS_BUCKET_NAME
+              value: 'test-bucket'
+
+            # --- Secrets (Mapping from the 'nestjs-app-secrets' K8s Secret) ---
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: nestjs-app-secrets
+                  key: jwt-secret
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: nestjs-app-secrets
+                  key: db-password
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: nestjs-app-secrets
+                  key: database-url
+            - name: RESEND_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: nestjs-app-secrets
+                  key: resend-api-key
+            - name: API_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: nestjs-app-secrets
+                  key: api-secret
+            - name: GCS_CREDENTIALS
+              valueFrom:
+                secretKeyRef:
+                  name: nestjs-app-secrets
+                  key: gcs-credentials
