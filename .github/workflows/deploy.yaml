@@ -70,6 +70,8 @@ jobs:
       - name: Deploy to GKE via Kustomize
         run: |
           gcloud container clusters get-credentials ${{ secrets.CLUSTER_NAME }} --region us-central1
+          kubectl delete deployment nestjs-enterprise-starter-kit -n ${{ steps.env_spec.outputs.target }} --ignore-not-found
           cd k8s/overlays/${{ steps.env_spec.outputs.target }}
           kustomize edit set image REPLACE_WITH_IMAGE_TAG=${{ steps.build_step.outputs.image_tag }}
           kubectl apply -k .
+          kubectl rollout status deployment/nestjs-enterprise-starter-kit -n ${{ steps.env_spec.outputs.target }}
