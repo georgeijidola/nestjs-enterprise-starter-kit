@@ -59,6 +59,11 @@ spec:
                 secretKeyRef:
                   name: nestjs-app-secrets
                   key: resend-api-key
+            - name: EMAIL_FROM
+              valueFrom:
+                secretKeyRef:
+                  name: nestjs-app-secrets
+                  key: email-from
             - name: API_SECRET
               valueFrom:
                 secretKeyRef:
