@@ -1,0 +1,948 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>nestjs-enterprise-starter-kit documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">nestjs-enterprise-starter-kit documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content interface">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Interfaces</li>
+  <li class="breadcrumb-item"
+  >
+  PaginatedResult</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/common/utils/cursor-pagination.util.ts</code>
+        </p>
+
+
+
+
+        <section data-compodoc="block-index">
+            <h3 id="index">Index</h3>
+            <table class="table table-sm table-bordered index-table">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Properties</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                        <a href="#data" 
+>
+                                            data
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#links" 
+>
+                                            links
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#meta" 
+>
+                                            meta
+                                        </a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+
+
+            <section data-compodoc="block-properties">
+                <h3 id="inputs">Properties</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="data"></a>
+                                        <span class="name "><b>data</b>
+                                            <a href="#data">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>data:     <code>T[]</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>T[]</code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="links"></a>
+                                        <span class="name "><b>links</b>
+                                            <a href="#links">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>links:     <code>literal type</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>literal type</code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="meta"></a>
+                                        <span class="name "><b>meta</b>
+                                            <a href="#meta">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>meta:         <code><a href="../interfaces/PaginationMeta.html" target="_self" >PaginationMeta</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="../interfaces/PaginationMeta.html" target="_self" >PaginationMeta</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+            </section>
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  BadRequestException,
+  UnprocessableEntityException,
+} from &#x27;@nestjs/common&#x27;;
+
+export interface CursorPaginationOptions {
+  size?: number;
+  after?: string;
+  before?: string;
+  sort?: string[];
+  filter?: Record&lt;string, any&gt;;
+}
+
+export interface PaginationMeta {
+  hasNextPage: boolean;
+  hasPreviousPage: boolean;
+  startCursor?: string;
+  endCursor?: string;
+  lastCursor?: string;
+  totalCount?: number;
+}
+
+export interface PaginatedResult&lt;T&gt; {
+  data: T[];
+  meta: PaginationMeta;
+  links: {
+    first?: string;
+    prev?: string;
+    next?: string;
+    last?: string;
+  };
+}
+
+export interface SortOption {
+  field: string;
+  direction: &#x27;asc&#x27; | &#x27;desc&#x27;;
+}
+
+export interface PrismaModel&lt;T&gt; {
+  findMany: (args: any) &#x3D;&gt; Promise&lt;T[]&gt;;
+  count: (args: any) &#x3D;&gt; Promise&lt;number&gt;;
+}
+
+const encode &#x3D; (str: string): string &#x3D;&gt;
+  Buffer.from(str, &#x27;utf8&#x27;).toString(&#x27;base64url&#x27;);
+const decode &#x3D; (str: string): string &#x3D;&gt;
+  Buffer.from(str, &#x27;base64url&#x27;).toString(&#x27;utf8&#x27;);
+
+export class CursorPaginationUtil {
+  private static readonly DEFAULT_SIZE &#x3D; 10;
+  private static readonly MAX_SIZE &#x3D; 50;
+
+  static async paginate&lt;T&gt;(
+    model: PrismaModel&lt;T&gt;,
+    options: CursorPaginationOptions,
+    baseUrl: string,
+    include?: any,
+    select?: any,
+  ): Promise&lt;PaginatedResult&lt;T&gt;&gt; {
+    const validatedOptions &#x3D; this.validateOptions(options);
+    const sortOptions &#x3D; this.parseSortOptions(validatedOptions.sort);
+
+    let whereConditions: any &#x3D; {};
+
+    if (validatedOptions.filter) {
+      whereConditions &#x3D; {
+        ...whereConditions,
+        ...this.buildPrismaWhereConditions(validatedOptions.filter, [&#x27;status&#x27;]),
+      };
+    }
+
+    if (validatedOptions.after) {
+      const cursorConditions &#x3D; this.buildPrismaCursorConditions(
+        validatedOptions.after,
+        sortOptions,
+        false,
+      );
+      whereConditions &#x3D; { ...whereConditions, ...cursorConditions };
+    } else if (validatedOptions.before) {
+      const cursorConditions &#x3D; this.buildPrismaCursorConditions(
+        validatedOptions.before,
+        sortOptions,
+        true,
+      );
+      whereConditions &#x3D; { ...whereConditions, ...cursorConditions };
+    }
+
+    const queryArgs: any &#x3D; {
+      where: whereConditions,
+      orderBy: this.buildPrismaOrderBy(sortOptions),
+      take: validatedOptions.size! + 1,
+    };
+
+    if (include) queryArgs.include &#x3D; include;
+    if (select) queryArgs.select &#x3D; select;
+
+    const [records, totalCount] &#x3D; await Promise.all([
+      model.findMany(queryArgs),
+      model.count({
+        where: this.buildPrismaWhereConditions(validatedOptions.filter || {}, [
+          &#x27;status&#x27;,
+        ]),
+      }),
+    ]);
+
+    const hasNextPage &#x3D; records.length &#x3D;&#x3D;&#x3D; validatedOptions.size! + 1;
+    const hasPreviousPage &#x3D;
+      !!validatedOptions.after || !!validatedOptions.before;
+
+    if (hasNextPage) records.pop();
+    if (validatedOptions.before) records.reverse();
+
+    const meta: PaginationMeta &#x3D; {
+      hasNextPage: validatedOptions.before ? hasPreviousPage : hasNextPage,
+      hasPreviousPage: validatedOptions.before ? hasNextPage : hasPreviousPage,
+      startCursor:
+        records.length &gt; 0
+          ? this.encodeCursor(records[0], validatedOptions.sort!)
+          : undefined,
+      endCursor:
+        records.length &gt; 0
+          ? this.encodeCursor(
+              records[records.length - 1],
+              validatedOptions.sort!,
+            )
+          : undefined,
+      totalCount,
+      lastCursor: await this.getLastCursor(
+        model,
+        validatedOptions,
+        include,
+        select,
+      ),
+    };
+
+    const links &#x3D; this.generateLinks(baseUrl, validatedOptions, meta);
+    return { data: records, meta, links };
+  }
+
+  private static async getLastCursor&lt;T&gt;(
+    model: PrismaModel&lt;T&gt;,
+    options: CursorPaginationOptions,
+    include?: any,
+    select?: any,
+  ): Promise&lt;string | undefined&gt; {
+    const reversedSort &#x3D; this.buildPrismaOrderBy(
+      this.parseSortOptions(options.sort).map((s) &#x3D;&gt; ({
+        field: s.field,
+        direction: s.direction &#x3D;&#x3D;&#x3D; &#x27;asc&#x27; ? &#x27;desc&#x27; : &#x27;asc&#x27;,
+      })),
+    );
+
+    const where &#x3D; this.buildPrismaWhereConditions(options.filter || {}, [
+      &#x27;status&#x27;,
+    ]);
+    const queryArgs: any &#x3D; {
+      where,
+      orderBy: reversedSort,
+      take: 1,
+    };
+    if (include) queryArgs.include &#x3D; include;
+    if (select) queryArgs.select &#x3D; select;
+
+    const lastRecords &#x3D; await model.findMany(queryArgs);
+    if (lastRecords.length &#x3D;&#x3D;&#x3D; 0) return undefined;
+
+    return this.encodeCursor(lastRecords[0], options.sort!);
+  }
+
+  static parseQueryParams(query: any): CursorPaginationOptions {
+    const options: CursorPaginationOptions &#x3D; {
+      size: query[&#x27;page[size]&#x27;] ? parseInt(query[&#x27;page[size]&#x27;], 10) : undefined,
+      after: query[&#x27;page[after]&#x27;],
+      before: query[&#x27;page[before]&#x27;],
+      sort: Array.isArray(query.sort)
+        ? query.sort
+        : (query.sort?.split(&#x27;,&#x27;) ?? []),
+      filter: {},
+    };
+
+    Object.keys(query).forEach((key) &#x3D;&gt; {
+      if (key.startsWith(&#x27;filter[&#x27;) &amp;&amp; key.endsWith(&#x27;]&#x27;)) {
+        const filterPath &#x3D; key.slice(7, -1);
+        let value &#x3D; query[key];
+
+        if (typeof value &#x3D;&#x3D;&#x3D; &#x27;string&#x27; &amp;&amp; value.includes(&#x27;,&#x27;)) {
+          value &#x3D; value.split(&#x27;,&#x27;);
+        }
+
+        if (filterPath.includes(&#x27;][&#x27;)) {
+          const [field, operator] &#x3D; filterPath.split(&#x27;][&#x27;);
+          if (!options.filter![field]) {
+            options.filter![field] &#x3D; {};
+          }
+          options.filter![field][operator] &#x3D; value;
+        } else if (filterPath.includes(&#x27;.&#x27;)) {
+          const parts &#x3D; filterPath.split(&#x27;.&#x27;);
+          let current &#x3D; options.filter!;
+
+          if (parts.length &#x3D;&#x3D;&#x3D; 2 &amp;&amp; parts[0] &#x3D;&#x3D;&#x3D; &#x27;category&#x27;) {
+            if (!current[parts[0]]) {
+              current[parts[0]] &#x3D; { is: {} };
+            }
+            current[parts[0]].is[parts[1]] &#x3D; {
+              contains: value,
+              mode: &#x27;insensitive&#x27;,
+            };
+          } else {
+            for (let i &#x3D; 0; i &lt; parts.length - 1; i++) {
+              if (!current[parts[i]]) {
+                current[parts[i]] &#x3D; {};
+              }
+              current &#x3D; current[parts[i]];
+            }
+            const lastPart &#x3D; parts[parts.length - 1];
+            current[lastPart] &#x3D; { contains: value, mode: &#x27;insensitive&#x27; };
+          }
+        } else {
+          options.filter![filterPath] &#x3D; value;
+        }
+      }
+    });
+
+    return options;
+  }
+
+  private static encodeCursor(record: any, sortFields: string[]): string {
+    const cursorData: Record&lt;string, any&gt; &#x3D; {};
+    sortFields.forEach((field) &#x3D;&gt; {
+      const fieldName &#x3D; field.replace(/^-/, &#x27;&#x27;);
+      const value &#x3D; this.getNestedValue(record, fieldName);
+      if (value &#x3D;&#x3D;&#x3D; undefined) {
+        throw new Error(&#x60;Cursor field &quot;${fieldName}&quot; not found in record.&#x60;);
+      }
+      cursorData[fieldName] &#x3D; value;
+    });
+    cursorData.id &#x3D; record.id;
+    return encode(JSON.stringify(cursorData));
+  }
+
+  private static decodeCursor(cursor: string): Record&lt;string, any&gt; {
+    try {
+      return JSON.parse(decode(cursor));
+    } catch {
+      throw new BadRequestException(&#x27;Invalid cursor format&#x27;);
+    }
+  }
+
+  private static parseSortOptions(sort: string[] &#x3D; []): SortOption[] {
+    return sort.map((s) &#x3D;&gt; ({
+      field: s.startsWith(&#x27;-&#x27;) ? s.slice(1) : s,
+      direction: s.startsWith(&#x27;-&#x27;) ? &#x27;desc&#x27; : &#x27;asc&#x27;,
+    }));
+  }
+
+  private static validateOptions(
+    options: CursorPaginationOptions,
+  ): CursorPaginationOptions {
+    const normalized &#x3D; { ...options };
+    if (
+      normalized.size &amp;&amp;
+      (normalized.size &lt; 1 || normalized.size &gt; this.MAX_SIZE)
+    ) {
+      throw new UnprocessableEntityException(
+        &#x60;Page size must be between 1 and ${this.MAX_SIZE}&#x60;,
+      );
+    }
+    if (!normalized.size) normalized.size &#x3D; this.DEFAULT_SIZE;
+    if (normalized.after &amp;&amp; normalized.before) {
+      throw new BadRequestException(&#x27;Cannot use both after and before cursors&#x27;);
+    }
+    if (normalized.after) this.decodeCursor(normalized.after);
+    if (normalized.before) this.decodeCursor(normalized.before);
+    if (!normalized.sort || normalized.sort.length &#x3D;&#x3D;&#x3D; 0)
+      normalized.sort &#x3D; [&#x27;id&#x27;];
+    return normalized;
+  }
+
+  private static buildPrismaOrderBy(sortOptions: SortOption[]): any[] {
+    return sortOptions.map((sort) &#x3D;&gt; {
+      if (sort.field.includes(&#x27;.&#x27;)) {
+        const parts &#x3D; sort.field.split(&#x27;.&#x27;);
+        const orderBy: any &#x3D; {};
+        let current &#x3D; orderBy;
+
+        for (let i &#x3D; 0; i &lt; parts.length - 1; i++) {
+          current[parts[i]] &#x3D; {};
+          current &#x3D; current[parts[i]];
+        }
+        current[parts[parts.length - 1]] &#x3D; sort.direction;
+
+        return orderBy;
+      } else {
+        return { [sort.field]: sort.direction };
+      }
+    });
+  }
+
+  private static buildPrismaCursorConditions(
+    cursor: string,
+    sortOptions: SortOption[],
+    isPrevious &#x3D; false,
+  ): any {
+    const cursorData &#x3D; this.decodeCursor(cursor);
+    if (sortOptions.length &#x3D;&#x3D;&#x3D; 1) {
+      const { field, direction } &#x3D; sortOptions[0];
+      const value &#x3D; cursorData[field];
+      if (value &#x3D;&#x3D;&#x3D; undefined) return {};
+      const operator &#x3D; (isPrevious ? direction &#x3D;&#x3D;&#x3D; &#x27;asc&#x27; : direction &#x3D;&#x3D;&#x3D; &#x27;desc&#x27;)
+        ? &#x27;gt&#x27;
+        : &#x27;lt&#x27;;
+      return { [field]: { [operator]: value } };
+    }
+
+    const conditions: any[] &#x3D; [];
+    for (let i &#x3D; 0; i &lt; sortOptions.length; i++) {
+      const current &#x3D; sortOptions[i];
+      const value &#x3D; cursorData[current.field];
+      if (value &#x3D;&#x3D;&#x3D; undefined) continue;
+      const condition: any &#x3D; {};
+      for (let j &#x3D; 0; j &lt; i; j++) {
+        const prev &#x3D; sortOptions[j];
+        condition[prev.field] &#x3D; cursorData[prev.field];
+      }
+      const operator &#x3D; (
+        isPrevious ? current.direction &#x3D;&#x3D;&#x3D; &#x27;asc&#x27; : current.direction &#x3D;&#x3D;&#x3D; &#x27;desc&#x27;
+      )
+        ? &#x27;gt&#x27;
+        : &#x27;lt&#x27;;
+      condition[current.field] &#x3D; { [operator]: value };
+      conditions.push(condition);
+    }
+    return { OR: conditions };
+  }
+
+  private static buildPrismaWhereConditions(
+    filters: Record&lt;string, any&gt;,
+    enumFields: string[] &#x3D; [],
+  ): Record&lt;string, any&gt; {
+    const conditions: Record&lt;string, any&gt; &#x3D; {};
+
+    for (const [key, value] of Object.entries(filters)) {
+      if ([&#x27;OR&#x27;, &#x27;AND&#x27;, &#x27;NOT&#x27;].includes(key)) {
+        if (Array.isArray(value)) {
+          conditions[key] &#x3D; value.map((item: any) &#x3D;&gt; {
+            if (typeof item &#x3D;&#x3D;&#x3D; &#x27;object&#x27;) {
+              if (item.category?.equals) {
+                return {
+                  ...this.buildPrismaWhereConditions(
+                    Object.fromEntries(
+                      Object.entries(item).filter(([k]) &#x3D;&gt; k !&#x3D;&#x3D; &#x27;category&#x27;),
+                    ),
+                    enumFields,
+                  ),
+                  category: {
+                    is: item.category.equals,
+                  },
+                };
+              }
+              return this.buildPrismaWhereConditions(item, enumFields);
+            }
+            return item;
+          });
+        } else if (typeof value &#x3D;&#x3D;&#x3D; &#x27;object&#x27; &amp;&amp; value !&#x3D;&#x3D; null) {
+          conditions[key] &#x3D; this.buildPrismaWhereConditions(value, enumFields);
+        } else {
+          conditions[key] &#x3D; value;
+        }
+      } else {
+        if (key &#x3D;&#x3D;&#x3D; &#x27;category&#x27;) {
+          if (value?.equals) {
+            conditions[key] &#x3D; { is: value.equals };
+          } else if (value?.is) {
+            conditions[key] &#x3D; value;
+          } else {
+            conditions[key] &#x3D; { is: value };
+          }
+        } else {
+          this.assignNestedKey(conditions, key, value);
+        }
+      }
+    }
+
+    return conditions;
+  }
+
+  private static assignNestedKey(obj: any, key: string, value: any) {
+    const keys &#x3D; key.replace(/\]/g, &#x27;&#x27;).split(/\[|\./);
+    let current &#x3D; obj;
+
+    for (let i &#x3D; 0; i &lt; keys.length - 1; i++) {
+      if (!current[keys[i]]) current[keys[i]] &#x3D; {};
+      current &#x3D; current[keys[i]];
+    }
+
+    const lastKey &#x3D; keys[keys.length - 1];
+    const dateFields &#x3D; [&#x27;publishedAt&#x27;, &#x27;createdAt&#x27;, &#x27;updatedAt&#x27;, &#x27;deletedAt&#x27;];
+    const isDateField &#x3D; dateFields.includes(lastKey);
+    const enumFields &#x3D; [&#x27;status&#x27;];
+    const isEnumField &#x3D; enumFields.includes(lastKey);
+    const relationFields &#x3D; [&#x27;category&#x27;];
+    const isRelationField &#x3D; relationFields.includes(keys[0]);
+
+    if (
+      typeof value &#x3D;&#x3D;&#x3D; &#x27;object&#x27; &amp;&amp;
+      value !&#x3D;&#x3D; null &amp;&amp;
+      Object.keys(value).some((k) &#x3D;&gt;
+        [&#x27;equals&#x27;, &#x27;not&#x27;, &#x27;in&#x27;, &#x27;lt&#x27;, &#x27;lte&#x27;, &#x27;gt&#x27;, &#x27;gte&#x27;, &#x27;contains&#x27;].includes(
+          k,
+        ),
+      )
+    ) {
+      if (isDateField) {
+        const dateConditions: Record&lt;string, any&gt; &#x3D; {};
+        for (const [op, val] of Object.entries(value)) {
+          if (typeof val &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
+            const parsedDate &#x3D; new Date(val);
+            if (op &#x3D;&#x3D;&#x3D; &#x27;gte&#x27;) {
+              dateConditions[op] &#x3D; new Date(
+                Date.UTC(
+                  parsedDate.getUTCFullYear(),
+                  parsedDate.getUTCMonth(),
+                  parsedDate.getUTCDate(),
+                  0,
+                  0,
+                  0,
+                  0,
+                ),
+              );
+            } else if (op &#x3D;&#x3D;&#x3D; &#x27;lte&#x27;) {
+              dateConditions[op] &#x3D; new Date(
+                Date.UTC(
+                  parsedDate.getUTCFullYear(),
+                  parsedDate.getUTCMonth(),
+                  parsedDate.getUTCDate(),
+                  23,
+                  59,
+                  59,
+                  999,
+                ),
+              );
+            } else {
+              dateConditions[op] &#x3D; parsedDate;
+            }
+          } else {
+            dateConditions[op] &#x3D; val;
+          }
+        }
+        current[lastKey] &#x3D; dateConditions;
+      } else if (isRelationField) {
+        const relationConditions: Record&lt;string, any&gt; &#x3D; {};
+        for (const [op, val] of Object.entries(value)) {
+          if (op &#x3D;&#x3D;&#x3D; &#x27;equals&#x27;) {
+            relationConditions[&#x27;is&#x27;] &#x3D; val;
+          } else {
+            relationConditions[op] &#x3D; val;
+          }
+        }
+        current[lastKey] &#x3D; relationConditions;
+      } else {
+        current[lastKey] &#x3D; value;
+      }
+      return;
+    }
+
+    if (isDateField &amp;&amp; typeof value &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
+      const dateOnlyPattern &#x3D; /^\d{4}-\d{2}-\d{2}$/;
+      const parsedDate &#x3D; new Date(value);
+
+      if (dateOnlyPattern.test(value)) {
+        const startOfDay &#x3D; new Date(
+          Date.UTC(
+            parsedDate.getUTCFullYear(),
+            parsedDate.getUTCMonth(),
+            parsedDate.getUTCDate(),
+            0,
+            0,
+            0,
+            0,
+          ),
+        );
+        const endOfDay &#x3D; new Date(
+          Date.UTC(
+            parsedDate.getUTCFullYear(),
+            parsedDate.getUTCMonth(),
+            parsedDate.getUTCDate(),
+            23,
+            59,
+            59,
+            999,
+          ),
+        );
+
+        current[lastKey] &#x3D; { gte: startOfDay, lte: endOfDay };
+      } else {
+        current[lastKey] &#x3D; { equals: parsedDate };
+      }
+      return;
+    }
+
+    if (lastKey &#x3D;&#x3D;&#x3D; &#x27;status&#x27;) {
+      current[lastKey] &#x3D; typeof value &#x3D;&#x3D;&#x3D; &#x27;object&#x27; ? value : { equals: value };
+      return;
+    }
+
+    if (lastKey &#x3D;&#x3D;&#x3D; &#x27;deletedAt&#x27;) {
+      if (value &#x3D;&#x3D;&#x3D; null) {
+        current[lastKey] &#x3D; value;
+      } else {
+        current[lastKey] &#x3D; { equals: value };
+      }
+      return;
+    }
+
+    if (isEnumField) {
+      current[lastKey] &#x3D; { equals: value };
+      return;
+    }
+
+    if (typeof value &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
+      const searchValue &#x3D; value.replace(/\*/g, &#x27;&#x27;);
+      current[lastKey] &#x3D; { contains: searchValue, mode: &#x27;insensitive&#x27; };
+      return;
+    }
+
+    if (value &#x3D;&#x3D;&#x3D; null) {
+      current[lastKey] &#x3D; value;
+    } else {
+      current[lastKey] &#x3D; { is: value };
+    }
+  }
+
+  private static generateLinks(
+    baseUrl: string,
+    options: CursorPaginationOptions,
+    meta: PaginationMeta,
+  ) {
+    const links: any &#x3D; {};
+    const params &#x3D; new URLSearchParams();
+
+    if (options.size &amp;&amp; options.size !&#x3D;&#x3D; this.DEFAULT_SIZE)
+      params.set(&#x27;page[size]&#x27;, options.size.toString());
+    if (options.sort?.length) params.set(&#x27;sort&#x27;, options.sort.join(&#x27;,&#x27;));
+
+    if (options.filter) {
+      for (const [key, value] of Object.entries(options.filter)) {
+        if (value &#x3D;&#x3D;&#x3D; null || value &#x3D;&#x3D;&#x3D; undefined) continue;
+        if (key &#x3D;&#x3D;&#x3D; &#x27;OR&#x27;) {
+          continue;
+        } else if (typeof value &#x3D;&#x3D;&#x3D; &#x27;object&#x27; &amp;&amp; value !&#x3D;&#x3D; null) {
+          for (const [subKey, subValue] of Object.entries(value)) {
+            if (subValue &#x3D;&#x3D;&#x3D; null || subValue &#x3D;&#x3D;&#x3D; undefined) continue;
+            params.set(&#x60;filter[${key}.${subKey}]&#x60;, subValue.toString());
+          }
+        } else {
+          params.set(
+            &#x60;filter[${key}]&#x60;,
+            Array.isArray(value) ? value.join(&#x27;,&#x27;) : value.toString(),
+          );
+        }
+      }
+    }
+
+    const baseParams &#x3D; params.toString();
+    links.first &#x3D; &#x60;${baseUrl}?${baseParams}&#x60;;
+
+    if (meta.hasPreviousPage &amp;&amp; meta.startCursor) {
+      const prevParams &#x3D; new URLSearchParams(baseParams);
+      prevParams.set(&#x27;page[before]&#x27;, meta.startCursor);
+      links.prev &#x3D; &#x60;${baseUrl}?${prevParams.toString()}&#x60;;
+    }
+
+    if (meta.hasNextPage &amp;&amp; meta.endCursor) {
+      const nextParams &#x3D; new URLSearchParams(baseParams);
+      nextParams.set(&#x27;page[after]&#x27;, meta.endCursor);
+      links.next &#x3D; &#x60;${baseUrl}?${nextParams.toString()}&#x60;;
+    }
+
+    if (meta.lastCursor) {
+      const lastParams &#x3D; new URLSearchParams(baseParams);
+      lastParams.set(&#x27;page[after]&#x27;, meta.lastCursor);
+      links.last &#x3D; &#x60;${baseUrl}?${lastParams.toString()}&#x60;;
+    }
+
+    return links;
+  }
+
+  private static getNestedValue(obj: any, path: string): any {
+    return path.split(&#x27;.&#x27;).reduce((current, key) &#x3D;&gt; current?.[key], obj);
+  }
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
+            var COMPODOC_CURRENT_PAGE_URL = 'PaginatedResult.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

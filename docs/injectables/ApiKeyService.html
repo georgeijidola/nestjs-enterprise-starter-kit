@@ -1,0 +1,1647 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>nestjs-enterprise-starter-kit documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">nestjs-enterprise-starter-kit documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Injectables</li>
+  <li class="breadcrumb-item" >ApiKeyService</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/domain/api-key/services/api-key.service.ts</code>
+        </p>
+
+
+
+
+
+            <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#logger" >logger</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#checkWhitelist" >checkWhitelist</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#createApiKey" >createApiKey</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#findAll" >findAll</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#findOne" >findOne</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#generateApiKey" >generateApiKey</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#ipToInt" >ipToInt</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#isIpInCidr" >isIpInCidr</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#revokeApiKey" >revokeApiKey</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#updateApiKey" >updateApiKey</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#validateApiKey" >validateApiKey</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#validateWhitelistEntry" >validateWhitelistEntry</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(prisma: PrismaClient, auditService: <a href="../injectables/AuditService.html" target="_self">AuditService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/domain/api-key/services/api-key.service.ts:28</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>prisma</td>
+                                                  
+                                                        <td>
+                                                                    <code>PrismaClient</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>auditService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuditService.html" target="_self" >AuditService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="checkWhitelist"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>checkWhitelist</b></span>
+                        <a href="#checkWhitelist"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>checkWhitelist(whitelistEntries: any[], ipAddress: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, origin?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="391"
+                                    class="link-to-prism">src/domain/api-key/services/api-key.service.ts:391</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>whitelistEntries</td>
+                                            <td>
+                                                        <code>any[]</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>ipAddress</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>origin</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    Yes
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createApiKey"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>createApiKey</b></span>
+                        <a href="#createApiKey"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>createApiKey(dto: <a href="../classes/CreateApiKeyDto.html" target="_self">CreateApiKeyDto</a>, adminId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="35"
+                                    class="link-to-prism">src/domain/api-key/services/api-key.service.ts:35</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>dto</td>
+                                            <td>
+                                                            <code><a href="../classes/CreateApiKeyDto.html" target="_self" >CreateApiKeyDto</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>adminId</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;CreateApiKeyResponseDto&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="findAll"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>findAll</b></span>
+                        <a href="#findAll"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findAll()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="110"
+                                    class="link-to-prism">src/domain/api-key/services/api-key.service.ts:110</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;ApiKeyListResponseDto&gt;</code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="findOne"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>findOne</b></span>
+                        <a href="#findOne"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>findOne(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="142"
+                                    class="link-to-prism">src/domain/api-key/services/api-key.service.ts:142</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;ApiKeyResponseDto&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="generateApiKey"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>generateApiKey</b></span>
+                        <a href="#generateApiKey"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>generateApiKey()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="356"
+                                    class="link-to-prism">src/domain/api-key/services/api-key.service.ts:356</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ipToInt"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>ipToInt</b></span>
+                        <a href="#ipToInt"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>ipToInt(ip: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="443"
+                                    class="link-to-prism">src/domain/api-key/services/api-key.service.ts:443</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>ip</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isIpInCidr"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>isIpInCidr</b></span>
+                        <a href="#isIpInCidr"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>isIpInCidr(ip: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, cidr: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="428"
+                                    class="link-to-prism">src/domain/api-key/services/api-key.service.ts:428</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>ip</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>cidr</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="revokeApiKey"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>revokeApiKey</b></span>
+                        <a href="#revokeApiKey"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>revokeApiKey(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="255"
+                                    class="link-to-prism">src/domain/api-key/services/api-key.service.ts:255</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateApiKey"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>updateApiKey</b></span>
+                        <a href="#updateApiKey"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>updateApiKey(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, dto: <a href="../classes/UpdateApiKeyDto.html" target="_self">UpdateApiKeyDto</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="164"
+                                    class="link-to-prism">src/domain/api-key/services/api-key.service.ts:164</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>dto</td>
+                                            <td>
+                                                            <code><a href="../classes/UpdateApiKeyDto.html" target="_self" >UpdateApiKeyDto</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;ApiKeyResponseDto&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="validateApiKey"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>validateApiKey</b></span>
+                        <a href="#validateApiKey"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>validateApiKey(apiKey: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, ipAddress: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, origin?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="286"
+                                    class="link-to-prism">src/domain/api-key/services/api-key.service.ts:286</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>apiKey</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>ipAddress</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>origin</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    Yes
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Promise&lt;literal type&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="validateWhitelistEntry"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>validateWhitelistEntry</b></span>
+                        <a href="#validateWhitelistEntry"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>validateWhitelistEntry(type: WhitelistType, value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="361"
+                                    class="link-to-prism">src/domain/api-key/services/api-key.service.ts:361</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>type</td>
+                                            <td>
+                                                        <code>WhitelistType</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>value</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="logger"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>logger</b></span>
+                        <a href="#logger"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Logger(ApiKeyService.name)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/domain/api-key/services/api-key.service.ts:28</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  Injectable,
+  Logger,
+  NotFoundException,
+  BadRequestException,
+  ConflictException,
+} from &#x27;@nestjs/common&#x27;;
+import {
+  PrismaClient,
+  ApiKeyStatus,
+  WhitelistType,
+  AuditAction,
+} from &#x27;@prisma/client&#x27;;
+import { CreateApiKeyDto } from &#x27;../dto/create-api-key.dto&#x27;;
+import { UpdateApiKeyDto } from &#x27;../dto/update-api-key.dto&#x27;;
+import {
+  ApiKeyResponseDto,
+  CreateApiKeyResponseDto,
+  ApiKeyListResponseDto,
+} from &#x27;../dto/api-key-response.dto&#x27;;
+import { AuditService } from &#x27;../../../common/helpers/audit/services/audit.service&#x27;;
+import * as crypto from &#x27;crypto&#x27;;
+import * as argon2 from &#x27;argon2&#x27;;
+import { isIP } from &#x27;net&#x27;;
+
+@Injectable()
+export class ApiKeyService {
+  private readonly logger &#x3D; new Logger(ApiKeyService.name);
+
+  constructor(
+    private readonly prisma: PrismaClient,
+    private readonly auditService: AuditService,
+  ) {}
+
+  async createApiKey(
+    dto: CreateApiKeyDto,
+    adminId: string,
+  ): Promise&lt;CreateApiKeyResponseDto&gt; {
+    const existingKey &#x3D; await this.prisma.apiKey.findFirst({
+      where: { name: dto.name },
+    });
+
+    if (existingKey) {
+      throw new ConflictException(&#x27;An API key with this name already exists&#x27;);
+    }
+
+    const plainApiKey &#x3D; this.generateApiKey();
+    const keyHash &#x3D; await argon2.hash(plainApiKey);
+
+    if (dto.whitelistEntries) {
+      for (const entry of dto.whitelistEntries) {
+        this.validateWhitelistEntry(entry.type, entry.value);
+      }
+    }
+
+    const apiKey &#x3D; await this.prisma.$transaction(async (transaction) &#x3D;&gt; {
+      const createdKey &#x3D; await transaction.apiKey.create({
+        data: {
+          name: dto.name,
+          keyHash,
+          description: dto.description,
+          expiresAt: dto.expiresAt ? new Date(dto.expiresAt) : null,
+          createdById: adminId,
+          whitelistEntries: dto.whitelistEntries
+            ? {
+                create: dto.whitelistEntries.map((entry) &#x3D;&gt; ({
+                  type: entry.type,
+                  value: entry.value.toLowerCase(),
+                })),
+              }
+            : undefined,
+        },
+        include: {
+          whitelistEntries: true,
+          createdBy: {
+            select: {
+              id: true,
+              name: true,
+              email: true,
+            },
+          },
+        },
+      });
+
+      return createdKey;
+    });
+
+    this.logger.log(&#x60;API key created: ${dto.name} by admin ${adminId}&#x60;);
+
+    await this.auditService.log({
+      userId: adminId,
+      userEmail: &#x27;admin&#x27;,
+      action: AuditAction.API_KEY_CREATE,
+      message: &#x60;Created API key: ${dto.name}&#x60;,
+      method: &#x27;POST&#x27;,
+      details: {
+        apiKeyId: apiKey.id,
+        apiKeyName: dto.name,
+        description: dto.description,
+        whitelistEntriesCount: dto.whitelistEntries?.length || 0,
+      },
+    });
+
+    return {
+      apiKey: plainApiKey,
+      keyData: apiKey as unknown as ApiKeyResponseDto,
+    };
+  }
+
+  async findAll(): Promise&lt;ApiKeyListResponseDto&gt; {
+    const apiKeys &#x3D; await this.prisma.apiKey.findMany({
+      include: {
+        whitelistEntries: true,
+        createdBy: {
+          select: {
+            id: true,
+            name: true,
+            email: true,
+          },
+        },
+      },
+      orderBy: { createdAt: &#x27;desc&#x27; },
+    });
+    const now &#x3D; new Date();
+    const apiKeysWithCorrectStatus &#x3D; apiKeys.map((key) &#x3D;&gt; {
+      if (
+        key.expiresAt &amp;&amp;
+        key.expiresAt &lt; now &amp;&amp;
+        key.status &#x3D;&#x3D;&#x3D; ApiKeyStatus.ACTIVE
+      ) {
+        return { ...key, status: ApiKeyStatus.EXPIRED };
+      }
+      return key;
+    });
+
+    return {
+      data: apiKeysWithCorrectStatus as unknown as ApiKeyResponseDto[],
+      totalCount: apiKeys.length,
+    };
+  }
+
+  async findOne(id: string): Promise&lt;ApiKeyResponseDto&gt; {
+    const apiKey &#x3D; await this.prisma.apiKey.findUnique({
+      where: { id },
+      include: {
+        whitelistEntries: true,
+        createdBy: {
+          select: {
+            id: true,
+            name: true,
+            email: true,
+          },
+        },
+      },
+    });
+
+    if (!apiKey) {
+      throw new NotFoundException(&#x27;API key not found&#x27;);
+    }
+
+    return apiKey as unknown as ApiKeyResponseDto;
+  }
+
+  async updateApiKey(
+    id: string,
+    dto: UpdateApiKeyDto,
+  ): Promise&lt;ApiKeyResponseDto&gt; {
+    const existingKey &#x3D; await this.prisma.apiKey.findUnique({
+      where: { id },
+      include: { whitelistEntries: true },
+    });
+
+    if (!existingKey) {
+      throw new NotFoundException(&#x27;API key not found&#x27;);
+    }
+
+    if (existingKey.status &#x3D;&#x3D;&#x3D; ApiKeyStatus.REVOKED) {
+      throw new BadRequestException(&#x27;Cannot update revoked API key&#x27;);
+    }
+    if (dto.name &amp;&amp; dto.name !&#x3D;&#x3D; existingKey.name) {
+      const duplicateKey &#x3D; await this.prisma.apiKey.findFirst({
+        where: {
+          name: dto.name,
+          id: { not: id },
+        },
+      });
+
+      if (duplicateKey) {
+        throw new ConflictException(&#x27;An API key with this name already exists&#x27;);
+      }
+    }
+
+    if (dto.whitelistEntries) {
+      for (const entry of dto.whitelistEntries) {
+        this.validateWhitelistEntry(entry.type, entry.value);
+      }
+    }
+
+    const updatedKey &#x3D; await this.prisma.$transaction(async (transaction) &#x3D;&gt; {
+      await transaction.apiKey.update({
+        where: { id },
+        data: {
+          name: dto.name,
+          description: dto.description,
+          expiresAt: dto.expiresAt ? new Date(dto.expiresAt) : undefined,
+        },
+      });
+
+      if (dto.whitelistEntries) {
+        await transaction.whitelistEntry.deleteMany({
+          where: { apiKeyId: id },
+        });
+
+        await transaction.whitelistEntry.createMany({
+          data: dto.whitelistEntries.map((entry) &#x3D;&gt; ({
+            apiKeyId: id,
+            type: entry.type,
+            value: entry.value.toLowerCase(),
+          })),
+        });
+      }
+
+      return transaction.apiKey.findUnique({
+        where: { id },
+        include: {
+          whitelistEntries: true,
+          createdBy: {
+            select: {
+              id: true,
+              name: true,
+              email: true,
+            },
+          },
+        },
+      });
+    });
+
+    this.logger.log(&#x60;API key updated: ${id}&#x60;);
+
+    await this.auditService.log({
+      userId: &#x27;admin&#x27;,
+      userEmail: &#x27;admin&#x27;,
+      action: AuditAction.API_KEY_UPDATE,
+      message: &#x60;Updated API key: ${dto.name || existingKey.name}&#x60;,
+      method: &#x27;PATCH&#x27;,
+      details: {
+        apiKeyId: id,
+        changes: dto,
+      },
+    });
+
+    return updatedKey as unknown as ApiKeyResponseDto;
+  }
+
+  async revokeApiKey(id: string): Promise&lt;void&gt; {
+    const apiKey &#x3D; await this.prisma.apiKey.findUnique({ where: { id } });
+
+    if (!apiKey) {
+      throw new NotFoundException(&#x27;API key not found&#x27;);
+    }
+
+    if (apiKey.status &#x3D;&#x3D;&#x3D; ApiKeyStatus.REVOKED) {
+      throw new BadRequestException(&#x27;API key is already revoked&#x27;);
+    }
+
+    await this.prisma.apiKey.update({
+      where: { id },
+      data: { status: ApiKeyStatus.REVOKED },
+    });
+
+    this.logger.log(&#x60;API key revoked: ${id}&#x60;);
+
+    await this.auditService.log({
+      userId: &#x27;admin&#x27;,
+      userEmail: &#x27;admin&#x27;,
+      action: AuditAction.API_KEY_REVOKE,
+      message: &#x60;Revoked API key: ${apiKey.name}&#x60;,
+      method: &#x27;DELETE&#x27;,
+      details: {
+        apiKeyId: id,
+        apiKeyName: apiKey.name,
+      },
+    });
+  }
+
+  async validateApiKey(
+    apiKey: string,
+    ipAddress: string,
+    origin?: string,
+  ): Promise&lt;{
+    isValid: boolean;
+    apiKeyId?: string;
+    reason?: string;
+  }&gt; {
+    try {
+      const apiKeys &#x3D; await this.prisma.apiKey.findMany({
+        where: {
+          status: ApiKeyStatus.ACTIVE,
+        },
+        include: {
+          whitelistEntries: {
+            where: { isActive: true },
+          },
+        },
+      });
+
+      let matchedKey: (typeof apiKeys)[0] | null &#x3D; null;
+      for (const key of apiKeys) {
+        const isMatch &#x3D; await argon2.verify(key.keyHash, apiKey);
+        if (isMatch) {
+          matchedKey &#x3D; key;
+          break;
+        }
+      }
+
+      if (!matchedKey) {
+        return { isValid: false, reason: &#x27;Invalid API key&#x27; };
+      }
+
+      if (matchedKey.expiresAt &amp;&amp; new Date() &gt; matchedKey.expiresAt) {
+        return {
+          isValid: false,
+          reason: &#x27;API key expired&#x27;,
+          apiKeyId: matchedKey.id,
+        };
+      }
+
+      if (matchedKey.whitelistEntries.length &gt; 0) {
+        const isWhitelisted &#x3D; this.checkWhitelist(
+          matchedKey.whitelistEntries,
+          ipAddress,
+          origin,
+        );
+
+        if (!isWhitelisted) {
+          return {
+            isValid: false,
+            reason: &#x27;IP address or domain not whitelisted&#x27;,
+            apiKeyId: matchedKey.id,
+          };
+        }
+      }
+
+      await this.prisma.apiKey.update({
+        where: { id: matchedKey.id },
+        data: { lastUsedAt: new Date() },
+      });
+
+      return { isValid: true, apiKeyId: matchedKey.id };
+    } catch (error) {
+      this.logger.error(&#x27;Error validating API key&#x27;, error);
+      return { isValid: false, reason: &#x27;Validation error&#x27; };
+    }
+  }
+
+  private generateApiKey(): string {
+    const randomBytes &#x3D; crypto.randomBytes(32);
+    return &#x60;ak_${randomBytes.toString(&#x27;hex&#x27;)}&#x60;;
+  }
+
+  private validateWhitelistEntry(type: WhitelistType, value: string): void {
+    switch (type) {
+      case WhitelistType.IP_ADDRESS:
+        if (!isIP(value)) {
+          throw new BadRequestException(&#x60;Invalid IP address: ${value}&#x60;);
+        }
+        break;
+
+      case WhitelistType.DOMAIN: {
+        const domainRegex &#x3D;
+          /^(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\.)*[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?$/;
+        if (!domainRegex.test(value)) {
+          throw new BadRequestException(&#x60;Invalid domain: ${value}&#x60;);
+        }
+        break;
+      }
+
+      case WhitelistType.CIDR_RANGE: {
+        const cidrRegex &#x3D; /^(\d{1,3}\.){3}\d{1,3}\/\d{1,2}$/;
+        if (!cidrRegex.test(value)) {
+          throw new BadRequestException(&#x60;Invalid CIDR range: ${value}&#x60;);
+        }
+        break;
+      }
+
+      default:
+        throw new BadRequestException(&#x60;Invalid whitelist type: ${type}&#x60;);
+    }
+  }
+
+  private checkWhitelist(
+    whitelistEntries: any[],
+    ipAddress: string,
+    origin?: string,
+  ): boolean {
+    for (const entry of whitelistEntries) {
+      switch (entry.type) {
+        case WhitelistType.IP_ADDRESS:
+          if (entry.value &#x3D;&#x3D;&#x3D; ipAddress) {
+            return true;
+          }
+          break;
+
+        case WhitelistType.DOMAIN:
+          if (origin) {
+            try {
+              const url &#x3D; new URL(origin);
+              if (url.hostname.toLowerCase() &#x3D;&#x3D;&#x3D; entry.value) {
+                return true;
+              }
+            } catch {
+              // skip invalid origin
+            }
+          }
+          break;
+
+        case WhitelistType.CIDR_RANGE:
+          if (this.isIpInCidr(ipAddress, entry.value)) {
+            return true;
+          }
+          break;
+      }
+    }
+
+    return false;
+  }
+
+  private isIpInCidr(ip: string, cidr: string): boolean {
+    const [range, prefixLength] &#x3D; cidr.split(&#x27;/&#x27;);
+    const prefixLen &#x3D; parseInt(prefixLength, 10);
+
+    if (!isIP(ip) || !isIP(range)) {
+      return false;
+    }
+
+    const ipInt &#x3D; this.ipToInt(ip);
+    const rangeInt &#x3D; this.ipToInt(range);
+    const mask &#x3D; (-1 &lt;&lt; (32 - prefixLen)) &gt;&gt;&gt; 0;
+
+    return (ipInt &amp; mask) &#x3D;&#x3D;&#x3D; (rangeInt &amp; mask);
+  }
+
+  private ipToInt(ip: string): number {
+    return (
+      ip
+        .split(&#x27;.&#x27;)
+        .reduce((acc, octet) &#x3D;&gt; (acc &lt;&lt; 8) + parseInt(octet, 10), 0) &gt;&gt;&gt; 0
+    );
+  }
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'ApiKeyService.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

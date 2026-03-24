@@ -1,0 +1,622 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>nestjs-enterprise-starter-kit documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">nestjs-enterprise-starter-kit documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content class">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Classes</li>
+  <li class="breadcrumb-item" >CategoriesResponse</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/common/dto/pagination-query.dto.ts</code>
+        </p>
+
+
+
+
+
+
+            <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#data" >data</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#links" >links</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#meta" >meta</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+            <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="data"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>data</b></span>
+                        <a href="#data"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/CategoryDto.html" target="_self" >CategoryDto[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ApiProperty({type: undefined, description: &#x27;Array of category objects&#x27;, example: undefined})<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="221" class="link-to-prism">src/common/dto/pagination-query.dto.ts:221</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="links"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>links</b></span>
+                        <a href="#links"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/PaginationLinks.html" target="_self" >PaginationLinks</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ApiProperty({type: PaginationLinks, description: &#x27;Pagination links&#x27;, example: undefined})<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="246" class="link-to-prism">src/common/dto/pagination-query.dto.ts:246</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="meta"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>meta</b></span>
+                        <a href="#meta"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/PaginationMeta.html" target="_self" >PaginationMeta</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ApiProperty({type: PaginationMeta, description: &#x27;Pagination metadata&#x27;, example: undefined})<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="236" class="link-to-prism">src/common/dto/pagination-query.dto.ts:236</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+
+
+
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Transform } from &#x27;class-transformer&#x27;;
+import { IsOptional, IsInt, Min, Max, IsDateString } from &#x27;class-validator&#x27;;
+import { ApiProperty, ApiPropertyOptional } from &#x27;@nestjs/swagger&#x27;;
+
+export class CursorPaginationQueryDto {
+  @ApiPropertyOptional({
+    name: &#x27;page[size]&#x27;,
+    description: &#x27;Max number of results to return&#x27;,
+    default: 10,
+    minimum: 1,
+    maximum: 50,
+  })
+  @Transform(({ value }) &#x3D;&gt; parseInt(value, 10))
+  @IsOptional()
+  @IsInt()
+  @Min(1)
+  @Max(50)
+  [&#x27;page[size]&#x27;]?: number;
+
+  @ApiPropertyOptional({ description: &#x27;Cursor to fetch items after this ID&#x27; })
+  @IsOptional()
+  [&#x27;page[after]&#x27;]?: string;
+
+  @ApiPropertyOptional({ description: &#x27;Cursor to fetch items before this ID&#x27; })
+  @IsOptional()
+  [&#x27;page[before]&#x27;]?: string;
+
+  @ApiPropertyOptional({
+    description: &#x27;Field and direction to sort by. E.g. &#x60;createdAt&#x60;, &#x60;-name&#x60;&#x27;,
+    example: [&#x27;createdAt&#x27;, &#x27;-createdAt&#x27;, &#x27;name&#x27;, &#x27;-name&#x27;],
+    type: [String],
+  })
+  @IsOptional()
+  sort?: string[];
+
+  @ApiPropertyOptional({
+    description:
+      &#x27;Filter by name (example: ?filter[name]&#x3D;John or filter[name]&#x3D;&#x60;*ohn*&#x60;)&#x27;,
+  })
+  @IsOptional()
+  [&#x27;filter[name]&#x27;]?: string;
+
+  @ApiPropertyOptional({
+    description:
+      &#x27;Filter by category name - for products endpoint (example: ?filter[category.name]&#x3D;Suits)&#x27;,
+  })
+  @IsOptional()
+  [&#x27;filter[category.name]&#x27;]?: string;
+
+  @ApiPropertyOptional({
+    description:
+      &#x27;Filter by exact date (example: ?filter[createdAt]&#x3D;2025-08-05)&#x27;,
+  })
+  @IsOptional()
+  @IsDateString()
+  [&#x27;filter[publishedAt]&#x27;]?: string;
+
+  @ApiPropertyOptional({
+    description:
+      &#x27;Filter by start date (example: ?filter[publishedAt][gte]&#x3D;2025-08-01)&#x27;,
+  })
+  @IsOptional()
+  @IsDateString()
+  [&#x27;filter[publishedAt][gte]&#x27;]?: string;
+
+  @ApiPropertyOptional({
+    description:
+      &#x27;Filter by end date (example: ?filter[publishedAt][lte]&#x3D;2025-08-10)&#x27;,
+  })
+  @IsOptional()
+  @IsDateString()
+  [&#x27;filter[publishedAt][lte]&#x27;]?: string;
+
+  @ApiPropertyOptional({
+    description:
+      &#x27;Filter by exact created date (example: ?filter[createdAt]&#x3D;2025-08-05)&#x27;,
+  })
+  @IsOptional()
+  @IsDateString()
+  [&#x27;filter[createdAt]&#x27;]?: string;
+
+  @ApiPropertyOptional({
+    description:
+      &#x27;Filter by created date start (example: ?filter[createdAt][gte]&#x3D;2025-08-01)&#x27;,
+  })
+  @IsOptional()
+  @IsDateString()
+  [&#x27;filter[createdAt][gte]&#x27;]?: string;
+
+  @ApiPropertyOptional({
+    description:
+      &#x27;Filter by created date end (example: ?filter[createdAt][lte]&#x3D;2025-08-10)&#x27;,
+  })
+  @IsOptional()
+  @IsDateString()
+  [&#x27;filter[createdAt][lte]&#x27;]?: string;
+}
+
+export class CategoryDto {
+  @ApiProperty({
+    example: &#x27;550e8400-e29b-41d4-a716-446655440000&#x27;,
+    description: &#x27;Unique identifier of the category&#x27;,
+  })
+  id: string;
+
+  @ApiProperty({
+    example: &#x27;Electronics&#x27;,
+    description: &#x27;Name of the category&#x27;,
+  })
+  name: string;
+
+  @ApiProperty({
+    example: &#x27;2025-08-01T12:00:00.000Z&#x27;,
+    description: &#x27;Timestamp when the category was created&#x27;,
+  })
+  createdAt: Date;
+
+  @ApiProperty({
+    example: &#x27;2025-08-05T12:00:00.000Z&#x27;,
+    description: &#x27;Timestamp when the category was last updated&#x27;,
+  })
+  updatedAt: Date;
+}
+
+export class PaginationMeta {
+  @ApiProperty({
+    example: true,
+    description: &#x27;Indicates if there is a next page&#x27;,
+  })
+  hasNextPage: boolean;
+
+  @ApiProperty({
+    example: false,
+    description: &#x27;Indicates if there is a previous page&#x27;,
+  })
+  hasPreviousPage: boolean;
+
+  @ApiPropertyOptional({
+    example: &#x27;eyJpZCI6IjU1MGU4NDAwLWUyOWItNDFkNC1hNzE2LTQ0NjY1NTQ0MDAwMCIs&#x27;,
+    description: &#x27;Cursor representing the start of the current page&#x27;,
+  })
+  startCursor?: string;
+
+  @ApiPropertyOptional({
+    example:
+      &#x27;eyJpZCI6IjU1MGU4NDAwLWUyOWItNDFkNC1hNzE2LTQ0NjY1NTQ0MDAwMSIsImNyZWF&#x27;,
+    description: &#x27;Cursor representing the end of the current page&#x27;,
+  })
+  endCursor?: string;
+
+  @ApiPropertyOptional({
+    example:
+      &#x27;eyJpZCI6IjU1MGU4NDAwLWUyOWItNDFkNC1hNzE2LTQ0NjY1NTQ0MDAwMSIsImNyZWF&#x27;,
+    description: &#x27;Cursor representing the end of the results&#x27;,
+  })
+  lastCursor?: string;
+
+  @ApiPropertyOptional({
+    example: 100,
+    description: &#x27;Total number of items&#x27;,
+  })
+  totalCount?: number;
+
+  @ApiPropertyOptional({
+    example: 0,
+    description: &#x27;Offset used for pagination&#x27;,
+  })
+  offset?: number;
+}
+
+export class PaginationLinks {
+  @ApiPropertyOptional({
+    example: &#x27;https://api.example.com/categories?page%5Bsize%5D&#x3D;10&#x27;,
+    description: &#x27;URL to the first page of results&#x27;,
+  })
+  first?: string;
+
+  @ApiPropertyOptional({
+    example:
+      &#x27;https://api.example.com/categories?page%5Bbefore%5D&#x3D;eyJpZCI6IjU1MGU4NDAwIn0&#x27;,
+    description: &#x27;URL to the previous page of results&#x27;,
+  })
+  prev?: string;
+
+  @ApiPropertyOptional({
+    example:
+      &#x27;https://api.example.com/categories?page%5Bafter%5D&#x3D;eyJpZCI6IjU1MGU4NDAwIn0&#x27;,
+    description: &#x27;URL to the next page of results&#x27;,
+  })
+  next?: string;
+
+  @ApiPropertyOptional({
+    example:
+      &#x27;https://api.example.com/categories?page%5Bsize%5D&#x3D;10&amp;page%5Bafter%5D&#x3D;eyJpZCI6IjU1MGU4NDAwIn0&#x27;,
+    description: &#x27;URL to the last page of results&#x27;,
+  })
+  last?: string;
+}
+
+export class CategoriesResponse {
+  @ApiProperty({
+    type: [CategoryDto],
+    description: &#x27;Array of category objects&#x27;,
+    example: [
+      {
+        id: &#x27;550e8400-e29b-41d4-a716-446655440000&#x27;,
+        name: &#x27;Electronics&#x27;,
+        adminId: &#x27;550e8400-e29b-41d4-a716-446655440000&#x27;,
+        createdAt: &#x27;2025-08-01T12:00:00.000Z&#x27;,
+        updatedAt: &#x27;2025-08-05T12:00:00.000Z&#x27;,
+      },
+      {
+        id: &#x27;550e8400-e29b-41d4-a716-446655440001&#x27;,
+        name: &#x27;Books&#x27;,
+        adminId: &#x27;550e8400-e29b-41d4-a716-446655440000&#x27;,
+        createdAt: &#x27;2025-08-02T12:00:00.000Z&#x27;,
+        updatedAt: &#x27;2025-08-04T12:00:00.000Z&#x27;,
+      },
+    ],
+  })
+  data: CategoryDto[];
+
+  @ApiProperty({
+    type: PaginationMeta,
+    description: &#x27;Pagination metadata&#x27;,
+    example: {
+      hasNextPage: true,
+      hasPreviousPage: false,
+      startCursor:
+        &#x27;eyJpZCI6IjU1MGU4NDAwLWUyOWItNDFkNC1hNzE2LTQ0NjY1NTQ0MDAwMCIsImNyZWF0ZWR&#x27;,
+      endCursor:
+        &#x27;eyJpZCI6IjU1MGU4NDAwLWUyOWItNDFkNC1hNzE2LTQ0NjY1NTQ0MDAwMSIsImNyZWF0ZWR&#x27;,
+      totalCount: 100,
+    },
+  })
+  meta: PaginationMeta;
+
+  @ApiProperty({
+    type: PaginationLinks,
+    description: &#x27;Pagination links&#x27;,
+    example: {
+      first: &#x27;https://api.example.com/categories?page%5Bsize%5D&#x3D;10&#x27;,
+      next: &#x27;https://api.example.com/categories?page%5Bafter%5D&#x3D;eyJpZCI6IjU1MGU4NDAwIn0&#x27;,
+    },
+  })
+  links: PaginationLinks;
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
+            var COMPODOC_CURRENT_PAGE_URL = 'CategoriesResponse.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

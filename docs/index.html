@@ -1,0 +1,467 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>nestjs-enterprise-starter-kit documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+	   <link rel="stylesheet" href="./styles/style.css">
+        <link rel="stylesheet" href="./styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="./" class="navbar-brand">nestjs-enterprise-starter-kit documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content getting-started">
+                   <div class="content-data">
+
+<h1>NestJS Enterprise Starter Kit</h1>
+<p>A production-grade NestJS boilerplate with essential enterprise features: authentication, API key management, audit logging, caching, and health monitoring.</p>
+<h2>🏗️ Architecture</h2>
+<h3>Core Design Principles</h3>
+<ul>
+<li><strong>Domain-Driven Design</strong>: Business logic organized by domain</li>
+<li><strong>Layered Architecture</strong>: Clear separation of concerns</li>
+<li><strong>Dependency Injection</strong>: Loose coupling via NestJS DI container</li>
+<li><strong>Enterprise Patterns</strong>: Guards, interceptors, decorators, middleware</li>
+</ul>
+<h3>Project Structure</h3>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-none">src/
+├── common/              # Shared functionality
+│   ├── api/            # API utilities (middleware, response handlers)
+│   ├── decorators/     # Custom decorators (CurrentUser, Roles)
+│   ├── guards/         # Auth, API Key, and Role guards
+│   ├── helpers/        # Services (audit, cache, email, file storage)
+│   ├── interceptors/   # Response transformation
+│   └── utils/          # Pure utility functions
+├── config/             # Centralized configuration (AppConfiguration)
+├── domain/             # Business logic
+│   ├── api-key/       # API key management
+│   ├── auth/          # Authentication (signup, signin)
+│   └── users/         # User CRUD operations
+├── health/             # Health checks (Redis, Database, Server)
+├── loaders/            # Infrastructure (Prisma, Fastify)
+├── queues/             # Background job processing
+└── main.ts             # Application entry point</code></pre></div><h2>🚀 Tech Stack</h2>
+<ul>
+<li><strong>Backend:</strong> NestJS 11 with Fastify</li>
+<li><strong>Database:</strong> PostgreSQL with Prisma ORM 6 (multi-schema support)</li>
+<li><strong>Authentication:</strong> JWT with Argon2 password hashing</li>
+<li><strong>API Security:</strong> API key management with whitelist support (IP, Domain, CIDR)</li>
+<li><strong>Caching:</strong> Redis via @nestjs/cache-manager</li>
+<li><strong>File Storage:</strong> Google Cloud Storage integration</li>
+<li><strong>Email:</strong> Resend API integration</li>
+<li><strong>Validation:</strong> class-validator with global ValidationPipe</li>
+<li><strong>Documentation:</strong> Swagger/OpenAPI</li>
+<li><strong>Logging:</strong> Winston for structured logging</li>
+<li><strong>Testing:</strong> Jest with 31 passing tests</li>
+<li><strong>Code Quality:</strong> Husky pre-commit hooks, ESLint, Prettier</li>
+</ul>
+<h2>🛠️ Getting Started</h2>
+<h3>Prerequisites</h3>
+<ul>
+<li>Node.js (v18+)</li>
+<li>Docker and Docker Compose</li>
+<li>PostgreSQL</li>
+<li>Redis</li>
+</ul>
+<h3>Environment Variables</h3>
+<p>Create a <code>.env</code> file with the following:</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-env"># Server
+PORT=3000
+SERVER_IP=0.0.0.0
+
+# Database
+DATABASE_URL=postgresql://user:password&#64;localhost:5432/dbname
+
+# JWT
+JWT_SECRET=your-secret-key-min-32-characters
+JWT_SECRET_EXPIRE=3600
+
+# Email
+EMAIL_FROM=noreply&#64;example.com
+RESEND_API_KEY=your-resend-api-key
+
+# Cache
+CACHE_TTL=3600
+
+# Google Cloud Storage
+GCS_PROJECT_ID=your-project-id
+GCS_BUCKET_NAME=your-bucket-name
+GCS_KEY_FILE_PATH=
+GCS_CREDENTIALS=</code></pre></div><h3>Installation</h3>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-bash"># Clone repository
+git clone &lt;repository-url&gt;
+cd nestjs-enterprise-starter-kit
+
+# Install dependencies
+npm install
+
+# Start services (PostgreSQL &amp; Redis)
+npm run docker:start
+
+# Generate Prisma client
+npm run prisma:generate
+
+# Run migrations
+npm run prisma:migrate:dev
+
+# Seed database
+npm run prisma:seed</code></pre></div><h2>📚 API Endpoints</h2>
+<h3>Authentication</h3>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-bash">POST /auth/signup              # User registration
+POST /auth/signin              # User login</code></pre></div><h3>Users (Protected - Requires Auth)</h3>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-bash">GET    /users                  # List all users (Admin only)
+GET    /users/:id              # Get user by ID
+POST   /users                  # Create user (Admin only)
+PATCH  /users/:id              # Update user
+DELETE /users/:id              # Delete user (Admin only)</code></pre></div><h3>API Keys (Protected - Requires Auth)</h3>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-bash">GET    /api-keys               # List all API keys
+GET    /api-keys/:id           # Get API key details
+POST   /api-keys               # Create new API key
+PATCH  /api-keys/:id           # Update API key
+DELETE /api-keys/:id           # Revoke API key</code></pre></div><h3>Health &amp; Monitoring</h3>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-bash">GET  /                         # Basic health check
+GET  /health                   # Comprehensive health status
+GET  /health/database          # Database health
+GET  /health/redis             # Redis health
+GET  /health/server            # Server health</code></pre></div><h3>Documentation</h3>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-bash">GET  /docs                     # Swagger UI</code></pre></div><h2>🧪 Testing</h2>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-bash">npm test              # Run unit tests (31 tests)
+npm run test:watch    # Watch mode
+npm run test:cov      # Coverage report
+npm run test:e2e      # End-to-end tests</code></pre></div><h2>🔧 Development</h2>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-bash">npm run start:dev     # Development mode with hot reload
+npm run start:debug   # Debug mode
+npm run lint          # Lint code
+npm run format        # Format code with Prettier
+npm run prisma:format # Format Prisma schema</code></pre></div><h2>🏢 Enterprise Features</h2>
+<h3>✅ Authentication &amp; Authorization</h3>
+<ul>
+<li>JWT-based authentication with configurable expiry</li>
+<li>Role-based access control (USER, ADMIN)</li>
+<li>Password hashing with Argon2 (more secure than bcrypt)</li>
+<li>Auth guard for protected routes</li>
+<li>Roles guard for role-based permissions</li>
+<li>CurrentUser decorator for easy user access in controllers</li>
+</ul>
+<h3>✅ API Key Management</h3>
+<ul>
+<li>Secure API key generation with crypto</li>
+<li>API key hashing with Argon2</li>
+<li>Whitelist support (IP addresses, domains, CIDR ranges)</li>
+<li>API key status management (ACTIVE, REVOKED, EXPIRED)</li>
+<li>Last used tracking</li>
+<li>Expiration date support</li>
+<li>API key guard for public API access</li>
+</ul>
+<h3>✅ Audit Logging</h3>
+<ul>
+<li>Comprehensive audit trail for all actions</li>
+<li>User action tracking (signin, password reset, API key operations)</li>
+<li>Structured audit logs with JSON details</li>
+<li>Pagination support for audit log retrieval</li>
+<li>Filtering by user, action, and email</li>
+<li>Automatic error handling</li>
+</ul>
+<h3>✅ Database &amp; ORM</h3>
+<ul>
+<li>Prisma ORM 6 with PostgreSQL</li>
+<li>Multi-schema support (user.prisma, api-key.prisma, audit.prisma)</li>
+<li>Type-safe database queries</li>
+<li>Migration management</li>
+<li>Seeding support</li>
+<li>Connection pooling</li>
+</ul>
+<h3>✅ Caching Strategy</h3>
+<ul>
+<li>Redis integration via cache-manager</li>
+<li>Service-level caching (users list, individual users)</li>
+<li>Configurable TTL (default 300s)</li>
+<li>Cache invalidation on updates/deletes</li>
+<li>Performance optimization for read-heavy operations</li>
+</ul>
+<h3>✅ File Storage</h3>
+<ul>
+<li>Google Cloud Storage integration</li>
+<li>Configurable bucket and credentials</li>
+<li>Support for key file or JSON credentials</li>
+<li>File upload/download support</li>
+<li>Secure file management</li>
+</ul>
+<h3>✅ Email Service</h3>
+<ul>
+<li>Resend API integration</li>
+<li>Configurable sender email</li>
+<li>HTML and text email support</li>
+<li>Error handling and logging</li>
+<li>Template support</li>
+</ul>
+<h3>✅ Health Monitoring</h3>
+<ul>
+<li>Multiple health check endpoints</li>
+<li>Database connectivity check (Prisma)</li>
+<li>Redis connectivity check</li>
+<li>Server health indicators</li>
+<li>Memory and disk monitoring</li>
+<li>Custom health indicators</li>
+</ul>
+<h3>✅ Validation &amp; Security</h3>
+<ul>
+<li>Global validation pipes with class-validator</li>
+<li>Input sanitization</li>
+<li>Structured error responses (ErrorResponse, SuccessResponse)</li>
+<li>Security headers</li>
+<li>CORS configuration</li>
+<li>API key authentication for public endpoints</li>
+</ul>
+<h3>✅ Configuration Management</h3>
+<ul>
+<li>Centralized AppConfiguration service</li>
+<li>Environment variable validation at startup</li>
+<li>Type-safe configuration access</li>
+<li>Fallback values for optional configs</li>
+<li>Runtime validation with class-validator</li>
+<li>Comprehensive error messages</li>
+</ul>
+<h3>✅ Code Quality</h3>
+<ul>
+<li>Pre-commit hooks (test, lint, format, prisma format)</li>
+<li>Over 31 passing unit tests</li>
+<li>ESLint with TypeScript support</li>
+<li>Prettier code formatting</li>
+<li>Husky for git hooks</li>
+<li>Comprehensive test coverage</li>
+</ul>
+<h2>🔄 CI/CD Ready</h2>
+<p>The starter kit includes:</p>
+<ul>
+<li>Pre-commit hooks (test, lint, format)</li>
+<li>Docker configuration (docker-compose.yml)</li>
+<li>Environment management (.env.example)</li>
+<li>Production-ready builds</li>
+<li>Health check endpoints for monitoring</li>
+</ul>
+<h2>📖 Documentation</h2>
+<ul>
+<li><strong>API Docs:</strong> Available at <code>/docs</code> (Swagger UI)</li>
+<li><strong>Code Coverage:</strong> Generated in <code>/coverage</code></li>
+<li><strong>Architecture:</strong> Domain-driven design with clear separation</li>
+<li><strong>Prisma Schema:</strong> Multi-file schema in <code>prisma/schema/</code></li>
+</ul>
+<h2>🎯 Use Cases</h2>
+<p>Perfect for:</p>
+<ul>
+<li>Enterprise web applications</li>
+<li>SaaS platforms with multi-tenancy</li>
+<li>API-first development</li>
+<li>Microservices architecture</li>
+<li>Scalable backend systems</li>
+<li>Applications requiring audit trails</li>
+<li>Systems with API key authentication</li>
+</ul>
+<h2>🔐 Security Features</h2>
+<ul>
+<li>Argon2 password hashing (OWASP recommended)</li>
+<li>JWT token authentication</li>
+<li>API key authentication with hashing</li>
+<li>IP/Domain/CIDR whitelisting</li>
+<li>Role-based access control</li>
+<li>Audit logging for compliance</li>
+<li>Input validation and sanitization</li>
+<li>Secure configuration management</li>
+</ul>
+<h2>🤝 Contributing</h2>
+<ol>
+<li>Follow the established architecture patterns</li>
+<li>Write tests for new features</li>
+<li>Use conventional commit messages</li>
+<li>Ensure code passes all quality checks (lint, test, format)</li>
+<li>Update documentation for new features</li>
+</ol>
+<h2>📝 Scripts Reference</h2>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-bash"># Development
+npm run start:dev              # Start with hot reload
+npm run start:debug            # Start with debugger
+npm run start:repl             # Start REPL mode
+
+# Database
+npm run prisma:generate        # Generate Prisma client
+npm run prisma:migrate:dev     # Run migrations (dev)
+npm run prisma:migrate:prod    # Deploy migrations (prod)
+npm run prisma:seed            # Seed database
+npm run prisma:format          # Format schema files
+npm run prisma:validate        # Validate schema
+
+# Docker
+npm run docker:start           # Start containers
+npm run docker:down            # Stop containers
+npm run docker:sh              # Shell into container
+
+# Testing &amp; Quality
+npm test                       # Run tests
+npm run test:watch             # Watch mode
+npm run test:cov               # Coverage report
+npm run test:e2e               # E2E tests
+npm run lint                   # Lint code
+npm run format                 # Format code</code></pre></div><hr>
+<p><strong>Built for enterprise-grade applications</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 0;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'getting-started';
+            var COMPODOC_CURRENT_PAGE_URL = 'index.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="./js/libs/custom-elements.min.js"></script>
+       <script src="./js/libs/lit-html.js"></script>
+
+       <script src="./js/menu-wc.js" defer></script>
+       <script nomodule src="./js/menu-wc_es5.js" defer></script>
+
+       <script src="./js/libs/bootstrap-native.js"></script>
+
+       <script src="./js/libs/es6-shim.min.js"></script>
+       <script src="./js/libs/EventDispatcher.js"></script>
+       <script src="./js/libs/promise.min.js"></script>
+
+       <script src="./js/compodoc.js"></script>
+
+       <script src="./js/tabs.js"></script>
+       <script src="./js/menu.js"></script>
+       <script src="./js/libs/clipboard.min.js"></script>
+       <script src="./js/libs/prism.js"></script>
+       <script src="./js/sourceCode.js"></script>
+          <script src="./js/search/search.js"></script>
+          <script src="./js/search/lunr.min.js"></script>
+          <script src="./js/search/search-lunr.js"></script>
+          <script src="./js/search/search_index.js"></script>
+       <script src="./js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

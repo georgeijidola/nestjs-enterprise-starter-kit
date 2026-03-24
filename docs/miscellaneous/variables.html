@@ -1,0 +1,953 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>nestjs-enterprise-starter-kit documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">nestjs-enterprise-starter-kit documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content miscellaneous-variables">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Miscellaneous</li>
+  <li class="breadcrumb-item">Variables</li>
+</ol>
+
+<section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <ul class="index-list">
+                        <li>
+                            <a href="#ALLOWED_IMAGE_TYPES" title="src/common/utils/file-validation.util.ts" ><b>ALLOWED_IMAGE_TYPES</b>&nbsp;&nbsp;&nbsp;(src/.../file-validation.util.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#CurrentUser" title="src/common/decorators/current-user.decorator.ts" ><b>CurrentUser</b>&nbsp;&nbsp;&nbsp;(src/.../current-user.decorator.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#decode" title="src/common/utils/cursor-pagination.util.ts" ><b>decode</b>&nbsp;&nbsp;&nbsp;(src/.../cursor-pagination.util.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#encode" title="src/common/utils/cursor-pagination.util.ts" ><b>encode</b>&nbsp;&nbsp;&nbsp;(src/.../cursor-pagination.util.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#FastifyLoader" title="src/loaders/fastify/fastify.loader.ts" ><b>FastifyLoader</b>&nbsp;&nbsp;&nbsp;(src/.../fastify.loader.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#handleCacheError" title="src/common/errors/handlers/CacheErrorHandler.ts" ><b>handleCacheError</b>&nbsp;&nbsp;&nbsp;(src/.../CacheErrorHandler.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#handleCustomError" title="src/common/errors/handlers/CustomErrorHandler.ts" ><b>handleCustomError</b>&nbsp;&nbsp;&nbsp;(src/.../CustomErrorHandler.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#handleDatabaseError" title="src/common/errors/handlers/DatabaseErrorHandler.ts" ><b>handleDatabaseError</b>&nbsp;&nbsp;&nbsp;(src/.../DatabaseErrorHandler.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#handleHttpError" title="src/common/errors/handlers/HttpErrorHandler.ts" ><b>handleHttpError</b>&nbsp;&nbsp;&nbsp;(src/.../HttpErrorHandler.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#handleQueueError" title="src/common/errors/handlers/QueueErrorHandler.ts" ><b>handleQueueError</b>&nbsp;&nbsp;&nbsp;(src/.../QueueErrorHandler.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#httpStatusToErrorCodeMap" title="src/common/errors/handlers/HttpErrorHandler.ts" ><b>httpStatusToErrorCodeMap</b>&nbsp;&nbsp;&nbsp;(src/.../HttpErrorHandler.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#logger" title="src/common/errors/handlers/CacheErrorHandler.ts" ><b>logger</b>&nbsp;&nbsp;&nbsp;(src/.../CacheErrorHandler.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#logger" title="src/common/errors/handlers/CustomErrorHandler.ts" ><b>logger</b>&nbsp;&nbsp;&nbsp;(src/.../CustomErrorHandler.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#logger" title="src/common/errors/handlers/DatabaseErrorHandler.ts" ><b>logger</b>&nbsp;&nbsp;&nbsp;(src/.../DatabaseErrorHandler.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#logger" title="src/common/errors/handlers/HttpErrorHandler.ts" ><b>logger</b>&nbsp;&nbsp;&nbsp;(src/.../HttpErrorHandler.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#logger" title="src/common/errors/handlers/QueueErrorHandler.ts" ><b>logger</b>&nbsp;&nbsp;&nbsp;(src/.../QueueErrorHandler.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#MAX_FILE_SIZE" title="src/common/utils/file-validation.util.ts" ><b>MAX_FILE_SIZE</b>&nbsp;&nbsp;&nbsp;(src/.../file-validation.util.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#prisma" title="prisma/seed.ts" ><b>prisma</b>&nbsp;&nbsp;&nbsp;(prisma/.../seed.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#Roles" title="src/common/decorators/roles.decorator.ts" ><b>Roles</b>&nbsp;&nbsp;&nbsp;(src/.../roles.decorator.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#ROLES_KEY" title="src/common/decorators/roles.decorator.ts" ><b>ROLES_KEY</b>&nbsp;&nbsp;&nbsp;(src/.../roles.decorator.ts)</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+    <h3>src/common/utils/file-validation.util.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ALLOWED_IMAGE_TYPES"></a>
+                    <span class="name">
+                        <span ><b>ALLOWED_IMAGE_TYPES</b></span>
+                        <a href="#ALLOWED_IMAGE_TYPES"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+  &#x27;image/jpeg&#x27;,
+  &#x27;image/jpg&#x27;,
+  &#x27;image/png&#x27;,
+  &#x27;image/webp&#x27;,
+]</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="MAX_FILE_SIZE"></a>
+                    <span class="name">
+                        <span ><b>MAX_FILE_SIZE</b></span>
+                        <a href="#MAX_FILE_SIZE"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>10 * 1024 * 1024</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/common/decorators/current-user.decorator.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="CurrentUser"></a>
+                    <span class="name">
+                        <span ><b>CurrentUser</b></span>
+                        <a href="#CurrentUser"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>createParamDecorator(
+  (data: keyof User | undefined, ctx: ExecutionContext) &#x3D;&gt; {
+    const request &#x3D; ctx.switchToHttp().getRequest&lt;FastifyRequest&gt;();
+    const user &#x3D; request.user;
+
+    return data ? user?.[data] : user;
+  },
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/common/utils/cursor-pagination.util.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="decode"></a>
+                    <span class="name">
+                        <span ><b>decode</b></span>
+                        <a href="#decode"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(str: string): string &#x3D;&gt;
+  Buffer.from(str, &#x27;base64url&#x27;).toString(&#x27;utf8&#x27;)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="encode"></a>
+                    <span class="name">
+                        <span ><b>encode</b></span>
+                        <a href="#encode"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(str: string): string &#x3D;&gt;
+  Buffer.from(str, &#x27;utf8&#x27;).toString(&#x27;base64url&#x27;)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/loaders/fastify/fastify.loader.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="FastifyLoader"></a>
+                    <span class="name">
+                        <span ><b>FastifyLoader</b></span>
+                        <a href="#FastifyLoader"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(app: NestFastifyApplication) &#x3D;&gt; {
+  app.setGlobalPrefix(&#x27;api&#x27;);
+
+  app.enableVersioning({ type: VersioningType.URI, defaultVersion: &#x27;1&#x27; });
+
+  app.useGlobalPipes(
+    new ValidationPipe({
+      transform: true,
+      whitelist: true,
+      forbidNonWhitelisted: true,
+      errorHttpStatusCode: HttpStatus.UNPROCESSABLE_ENTITY,
+    }),
+  );
+
+  app.useGlobalFilters(new AllExceptionFilter());
+
+  const fastifyInstance &#x3D; app.getHttpAdapter().getInstance();
+
+  fastifyInstance.register(fastifyMultipart, {
+    limits: {
+      fileSize: 10 * 1024 * 1024,
+    },
+  });
+
+  fastifyInstance.addHook(&#x27;onRequest&#x27;, (request, reply, done) &#x3D;&gt; {
+    reply.setHeader &#x3D; function (key, value) {
+      return this.raw.setHeader(key, value);
+    };
+
+    reply.end &#x3D; function (...args) {
+      return this.raw.end(...args);
+    };
+
+    reply.statusCode &#x3D; HttpStatus.OK;
+
+    request.res &#x3D; reply;
+
+    done();
+  });
+
+  fastifyInstance.addHook(
+    &#x27;preSerialization&#x27;,
+    (request, reply, payload, done) &#x3D;&gt; {
+      if (typeof payload &#x3D;&#x3D;&#x3D; &#x27;object&#x27; &amp;&amp; payload !&#x3D;&#x3D; null) {
+        const serializedPayload &#x3D; JSON.parse(
+          JSON.stringify(payload, (key, value) &#x3D;&gt;
+            typeof value &#x3D;&#x3D;&#x3D; &#x27;bigint&#x27; ? value.toString() : value,
+          ),
+        );
+        done(null, serializedPayload);
+      } else {
+        done(null, payload);
+      }
+    },
+  );
+
+  const swaggerConfig &#x3D; new DocumentBuilder()
+    .setTitle(&#x27;NestJS Enterprise Starter Kit&#x27;)
+    .setDescription(&#x27;The NestJS Enterprise Starter Kit API specification&#x27;)
+    .addBearerAuth()
+    .addApiKey(
+      {
+        type: &#x27;apiKey&#x27;,
+        name: &#x27;x-api-key&#x27;,
+        in: &#x27;header&#x27;,
+        description:
+          &#x27;API Key for accessing the API. Can also be passed as Bearer token or query parameter.&#x27;,
+      },
+      &#x27;api-key&#x27;,
+    )
+    .setVersion(&#x27;1.0&#x27;)
+    .build();
+
+  const document &#x3D; SwaggerModule.createDocument(app, swaggerConfig);
+
+  if (document.paths) {
+    Object.keys(document.paths).forEach((path) &#x3D;&gt; {
+      Object.keys(document.paths[path]).forEach((method) &#x3D;&gt; {
+        const operation &#x3D; document.paths[path][method];
+        if (operation &amp;&amp; !operation.security) {
+          operation.security &#x3D; [{ &#x27;api-key&#x27;: [] }];
+        } else if (operation &amp;&amp; operation.security) {
+          const hasApiKey &#x3D; operation.security.some((sec) &#x3D;&gt; sec[&#x27;api-key&#x27;]);
+          if (!hasApiKey) {
+            operation.security.push({ &#x27;api-key&#x27;: [] });
+          }
+        }
+      });
+    });
+  }
+
+  SwaggerModule.setup(&#x27;docs&#x27;, app, document);
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/common/errors/handlers/CacheErrorHandler.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleCacheError"></a>
+                    <span class="name">
+                        <span ><b>handleCacheError</b></span>
+                        <a href="#handleCacheError"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(error: Error): ErrorResponse &#x3D;&gt; {
+  logger.error(&#x60;Cache error: ${error.message}&#x60;, error.stack);
+
+  return new ErrorResponse({
+    message: error.message || &#x27;A caching error occurred.&#x27;,
+    statusCode: HttpStatus.INTERNAL_SERVER_ERROR,
+    errorCode: ErrorCode.CACHE_ERROR,
+  });
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="logger"></a>
+                    <span class="name">
+                        <span ><b>logger</b></span>
+                        <a href="#logger"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Logger(&#x27;CacheErrorHandler&#x27;)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/common/errors/handlers/CustomErrorHandler.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleCustomError"></a>
+                    <span class="name">
+                        <span ><b>handleCustomError</b></span>
+                        <a href="#handleCustomError"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(exception: ErrorResponse): ErrorResponse &#x3D;&gt; {
+  const statusCode &#x3D; exception.statusCode || HttpStatus.INTERNAL_SERVER_ERROR;
+
+  logger.error(&#x60;Exception with status code ${statusCode} ${exception}&#x60;);
+
+  return exception;
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="logger"></a>
+                    <span class="name">
+                        <span ><b>logger</b></span>
+                        <a href="#logger"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Logger(&#x27;HttpErrorHandler&#x27;)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/common/errors/handlers/DatabaseErrorHandler.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleDatabaseError"></a>
+                    <span class="name">
+                        <span ><b>handleDatabaseError</b></span>
+                        <a href="#handleDatabaseError"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(
+  exception:
+    | PrismaClientKnownRequestError
+    | PrismaClientUnknownRequestError
+    | PrismaClientRustPanicError
+    | PrismaClientInitializationError
+    | PrismaClientValidationError,
+): ErrorResponse &#x3D;&gt; {
+  let statusCode: number &#x3D; HttpStatus.INTERNAL_SERVER_ERROR;
+  let message: string &#x3D; &#x27;Something went wrong&#x27;;
+  let errorCode &#x3D; ErrorCode.DB_CONNECTION_FAILED;
+
+  if (exception instanceof PrismaClientKnownRequestError) {
+    switch (exception.code) {
+      case &#x27;P1008&#x27;:
+        statusCode &#x3D; HttpStatus.INTERNAL_SERVER_ERROR;
+        message &#x3D; &#x27;Operation timed out.&#x27;;
+        errorCode &#x3D; ErrorCode.DB_CONNECTION_FAILED;
+
+        logger.error(
+          &#x60;Database connection timeout: ${exception.message}&#x60;,
+          exception.stack,
+        );
+        break;
+
+      case &#x27;P2002&#x27;:
+        statusCode &#x3D; HttpStatus.CONFLICT;
+        message &#x3D; &#x27;A record with this value already exists.&#x27;;
+        errorCode &#x3D; ErrorCode.DB_DUPLICATE_KEY;
+
+        logger.error(
+          &#x60;Unique constraint violation: ${exception.message}&#x60;,
+          exception.stack,
+        );
+        break;
+
+      case &#x27;P2003&#x27;:
+        statusCode &#x3D; HttpStatus.CONFLICT;
+        message &#x3D; &#x27;There is a problem with your request.&#x27;;
+        errorCode &#x3D; ErrorCode.DB_RECORD_NOT_FOUND;
+
+        logger.error(
+          &#x60;Foreign key constraint violation: ${exception.message}&#x60;,
+          exception.stack,
+        );
+        break;
+
+      case &#x27;P2025&#x27;:
+        statusCode &#x3D; HttpStatus.NOT_FOUND;
+        message &#x3D; &#x60;No record found with the provided ID.&#x60;;
+        errorCode &#x3D; ErrorCode.DB_RECORD_NOT_FOUND;
+
+        logger.error(&#x60;Record not found: ${exception.message}&#x60;, exception.stack);
+        break;
+
+      case &#x27;P20234&#x27;:
+        statusCode &#x3D; HttpStatus.BAD_REQUEST;
+        message &#x3D; &#x27;The provided relation does not exist.&#x27;;
+
+        logger.error(
+          &#x60;Relation does not exist: ${exception.message}&#x60;,
+          exception.stack,
+        );
+
+        break;
+
+      default:
+        logger.error(&#x60;${exception.message}:&#x60;, exception.stack);
+        errorCode &#x3D; ErrorCode.HTTP_INTERNAL_SERVER_ERROR;
+        break;
+    }
+  } else {
+    logger.error(&#x60;${exception.message}:&#x60;, exception.stack);
+  }
+
+  return new ErrorResponse({
+    message,
+    statusCode,
+    errorCode,
+  });
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="logger"></a>
+                    <span class="name">
+                        <span ><b>logger</b></span>
+                        <a href="#logger"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new ConsoleLogger(&#x27;DatabaseErrorHandler&#x27;)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/common/errors/handlers/HttpErrorHandler.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleHttpError"></a>
+                    <span class="name">
+                        <span ><b>handleHttpError</b></span>
+                        <a href="#handleHttpError"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(
+  exception: HttpException,
+  request: FastifyRequest,
+): ErrorResponse &#x3D;&gt; {
+  const statusCode &#x3D; exception.getStatus();
+  const response &#x3D; exception.getResponse();
+
+  let message: string | string[] &#x3D; &#x27;Something went wrong&#x27;;
+  let errorCode: ErrorCode | undefined;
+
+  if (typeof response &#x3D;&#x3D;&#x3D; &#x27;object&#x27; &amp;&amp; &#x27;message&#x27; in response) {
+    message &#x3D; (response as any).message;
+
+    if (&#x27;errorCode&#x27; in response) {
+      errorCode &#x3D; (response as any).errorCode as ErrorCode;
+    } else {
+      errorCode &#x3D; httpStatusToErrorCodeMap[statusCode];
+    }
+  } else {
+    message &#x3D; response as string;
+    errorCode &#x3D; httpStatusToErrorCodeMap[statusCode];
+  }
+
+  logger.error(
+    &#x60;HTTP ${request.method} ${request.url} failed with status code ${statusCode} ${exception.stack}&#x60;,
+  );
+
+  return new ErrorResponse({ message, statusCode, errorCode });
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="httpStatusToErrorCodeMap"></a>
+                    <span class="name">
+                        <span ><b>httpStatusToErrorCodeMap</b></span>
+                        <a href="#httpStatusToErrorCodeMap"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/enumerations.html#ErrorCode" target="_self" >Record&lt;number, ErrorCode&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  400: ErrorCode.HTTP_BAD_REQUEST,
+  401: ErrorCode.HTTP_UNAUTHORIZED,
+  403: ErrorCode.HTTP_FORBIDDEN,
+  404: ErrorCode.HTTP_NOT_FOUND,
+  405: ErrorCode.HTTP_METHOD_NOT_ALLOWED,
+  409: ErrorCode.HTTP_CONFLICT,
+  422: ErrorCode.HTTP_UNPROCESSABLE_ENTITY,
+  429: ErrorCode.HTTP_RATE_LIMITED,
+  500: ErrorCode.HTTP_INTERNAL_SERVER_ERROR,
+  503: ErrorCode.HTTP_SERVICE_UNAVAILABLE,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="logger"></a>
+                    <span class="name">
+                        <span ><b>logger</b></span>
+                        <a href="#logger"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Logger(&#x27;HttpErrorHandler&#x27;)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/common/errors/handlers/QueueErrorHandler.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleQueueError"></a>
+                    <span class="name">
+                        <span ><b>handleQueueError</b></span>
+                        <a href="#handleQueueError"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(error: Error): ErrorResponse &#x3D;&gt; {
+  logger.error(&#x60;Queue processing error: ${error.message}&#x60;, error.stack);
+
+  return new ErrorResponse({
+    message:
+      error.message || &#x27;An error occurred while processing the job queue.&#x27;,
+    statusCode: HttpStatus.INTERNAL_SERVER_ERROR,
+    errorCode: ErrorCode.QUEUE_ERROR,
+  });
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="logger"></a>
+                    <span class="name">
+                        <span ><b>logger</b></span>
+                        <a href="#logger"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Logger(&#x27;QueueErrorHandler&#x27;)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>prisma/seed.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="prisma"></a>
+                    <span class="name">
+                        <span ><b>prisma</b></span>
+                        <a href="#prisma"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new PrismaClient()</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/common/decorators/roles.decorator.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="Roles"></a>
+                    <span class="name">
+                        <span ><b>Roles</b></span>
+                        <a href="#Roles"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(...roles: UserRole[]) &#x3D;&gt; SetMetadata(ROLES_KEY, roles)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ROLES_KEY"></a>
+                    <span class="name">
+                        <span ><b>ROLES_KEY</b></span>
+                        <a href="#ROLES_KEY"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;roles&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'miscellaneous-variables';
+            var COMPODOC_CURRENT_PAGE_URL = 'variables.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
